@@ -240,8 +240,23 @@ For example, extractVowels('gregor') returns ['grgr', 'eo'].
 Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioou']
 ------------------------------------------------------------------------------------------------ */
 
+const alphabatizeArray = (arr) => {
+  return arr.sort((a, b) => a.localeCompare(b), []);
+};
+
 const extractVowels = (str) => {
-  // Solution code here...
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  let strArr = str.split('');
+  let leftOverVowels = '';
+  let output = [];
+  for (let i = strArr.length - 1; i >= 0; i--) {
+    if (vowels.includes(strArr[i])) {
+      leftOverVowels += strArr.splice(i, 1);
+    }
+  }
+  output.push(strArr.join(''));
+  output.push(alphabatizeArray(leftOverVowels.split('')).join(''));
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
