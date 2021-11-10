@@ -88,7 +88,7 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  // Solution code here...
+  return phoneNumber.match(/^\(\d{3}\)|^\d{3}?[ -]?\d{3}[ -]?\d{4}$/) ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 ------------------------------------------------------------------------------------------------ */
 
 const findTagNames = elements => {
-  // Solution code here...
+  return elements.map(element => element.match(/\/[a-z1-6]+/g)).reduce((a, b) => a.concat(b), []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -213,7 +213,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return the closing tags', () => {
     expect(findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])).toStrictEqual(['/h1', '/p']);
   });
