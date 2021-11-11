@@ -88,7 +88,7 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  return phoneNumber.match(/^\(\d{3}\)|^\d{3}?[ -]?\d{3}[ -]?\d{4}$/) ? true : false;
+  return phoneNumber.match(/^(\(\d{3}\)|\d{3}?)[ -]?\d{3}[ -]?\d{4}$/) ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -101,7 +101,8 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 ------------------------------------------------------------------------------------------------ */
 
 const findTagNames = elements => {
-  return elements.map(element => element.match(/\/[a-z1-6]+/g)).reduce((a, b) => a.concat(b), []);
+  return elements.map(element => element.match(/\/[a-z1-6]+/g))
+    .reduce((a, b) => a.concat(b), []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -210,6 +211,7 @@ describe('Testing challenge 6', () => {
     expect(validatePhoneNumber('55555555555')).toBeFalsy();
     expect(validatePhoneNumber('55555555555')).toBeFalsy();
     expect(validatePhoneNumber('55_55_5555')).toBeFalsy();
+    expect(validatePhoneNumber('(555) potato')).toBeFalsy();
   });
 });
 
