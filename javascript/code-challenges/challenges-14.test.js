@@ -23,7 +23,7 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  return arr.map(element => element[0].toUpperCase() + element.slice(1));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,7 +98,10 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  const luke = arr.find(element => element.name === 'Luke Skywalker');
+  return arr.filter(character => Number(character.mass) > Number(luke.mass))
+    .map(element => element.name)
+    .join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -116,7 +119,7 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  return arr.sort((a, b) => typeof a[property] === 'string' ? a[property].localeCompare(b[property]) : a[property] - b[property]);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -132,7 +135,7 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  return /^https:\/\//.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -153,9 +156,37 @@ Here is a sample board:
   ['X', 'O', 'X'],
 ];
 ------------------------------------------------------------------------------------------------ */
+// Board
+// 012
+// 345
+// 678
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  const winningComboIndexes = [
+    // If any of these index groups are all X's or O's that's a win.
+    [0, 3, 6], // vertical
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 1, 2], // horizontal
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 4, 8], // diagonal
+    [2, 4, 6],
+  ];
+
+  const fullBoard = board.reduce((a, b) => a.concat(b), []);
+
+  for (let i = 0; i < winningComboIndexes.length; i++) {
+    let posOne = winningComboIndexes[i][0];
+    let posTwo = winningComboIndexes[i][1];
+    let posThree = winningComboIndexes[i][2];
+    if (fullBoard[posOne] !== ''
+      && fullBoard[posOne] === fullBoard[posTwo]
+      && fullBoard[posTwo] === fullBoard[posThree]) {
+      return true;
+    }
+  }
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
