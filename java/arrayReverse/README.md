@@ -4,7 +4,7 @@ Write a function called `reverseArray` which takes an array as an argument. With
 
 ## Whiteboard Process
 
-[![Whiteboard](./reverse-array-whiteboard.jpg)](./reverse-array-whiteboard.jpg)
+[![Whiteboard](./array-reverse.jpg)](./array-reverse.jpg)
 
 <style>
   img {
