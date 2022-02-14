@@ -30,7 +30,7 @@ I know that traditional arrays occupy contiguous space in memory and each elemen
 
 ```java
 
-public static int[] reverseArray(int arr) {
+public static int[] reverseArray(int[] arr) {
   int index = 0;
   while(index < arr.length / 2) {
     int temp = arr[index];
