@@ -23,3 +23,5 @@ To run your tests
 | Table of Contents                                              |
 | ---------------------------------------------------------------|
 | [Whiteboarding: Array Reversal](./java/arrayReverse/README.md) |
+| [Whiteboarding: Array Insert Shift](./java/arrayInsertShift/README.md) |
+| [Whiteboarding: Binary Search](./java/binarySearch/README.md) |
