@@ -1,8 +1,5 @@
 # Data Structures and Algorithms
 
-See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-code-challenges), in the Code 301 Setup Guide.
-
-## Repository Quick Tour and Usage
 
 ### 301 Code Challenges
 
@@ -20,8 +17,9 @@ To run your tests
 
 ### 401 Data Structures, Code Challenges
 
-| Table of Contents                                              |
-| ---------------------------------------------------------------|
-| [Whiteboarding: Array Reversal](./java/arrayReverse/README.md) |
+| Table of Contents                                                      |
+| -----------------------------------------------------------------------|
+| [Whiteboarding: Array Reversal](./java/arrayReverse/README.md)         |
 | [Whiteboarding: Array Insert Shift](./java/arrayInsertShift/README.md) |
-| [Whiteboarding: Binary Search](./java/binarySearch/README.md) |
+| [Whiteboarding: Binary Search](./java/binarySearch/README.md)          |
+| [Implementation: Singly Linked Lists](./java/datastructures/README.md)
