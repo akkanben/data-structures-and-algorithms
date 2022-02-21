@@ -1,9 +1,7 @@
 package datastructures.linkedlist;
 
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LinkedListTest {
@@ -104,8 +102,8 @@ public class LinkedListTest {
     sut.append(200);
     sut.append(400);
     sut.append(500);
-    sut.insertBefore(500,300);
-    assert(sut.toString().equals("{ 100 } -> { 200 } -> { 400 } -> { 300 } -> { 500 } -> NULL"));
+    sut.insertBefore(400,300);
+    assert(sut.toString().equals("{ 100 } -> { 200 } -> { 300 } -> { 400 } -> { 500 } -> NULL"));
   }
 
   @Test
@@ -116,18 +114,56 @@ public class LinkedListTest {
     sut.append(2);
     sut.append(3);
     sut.insertBefore(0, -1);
-    System.out.println(sut);
-
+    assert(sut.toString().equals("{ -1 } -> { 0 } -> { 1 } -> { 2 } -> { 3 } -> NULL"));
   }
 
   @Test
   void test_insertbefore_throws_method_exception() {
     LinkedList sut = new LinkedList();
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.insertBefore(100,0);
+    });
     sut.append(100);
     sut.append(200);
     sut.append(300);
     assertThrows(IllegalArgumentException.class, () -> {
       sut.insertBefore(1000,300);
+    });
+  }
+
+  @Test
+  void test_insertafter_middle_node() {
+    LinkedList sut = new LinkedList();
+    sut.append(100);
+    sut.append(200);
+    sut.append(400);
+    sut.append(500);
+    sut.insertAfter(200,300);
+    assert(sut.toString().equals("{ 100 } -> { 200 } -> { 300 } -> { 400 } -> { 500 } -> NULL"));
+  }
+
+  @Test
+  void test_insertafter_last_node() {
+    LinkedList sut = new LinkedList();
+    sut.append(-50);
+    sut.append(-49);
+    sut.append(-48);
+    sut.append(-47);
+    sut.insertAfter(-47,-46);
+    assert(sut.toString().equals("{ -50 } -> { -49 } -> { -48 } -> { -47 } -> { -46 } -> NULL"));
+  }
+
+  @Test
+  void test_insertafter_throws_method_exception() {
+    LinkedList sut = new LinkedList();
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.insertAfter(100,0);
+    });
+    sut.append(100);
+    sut.append(200);
+    sut.append(300);
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.insertAfter(1000,300);
     });
   }
 }

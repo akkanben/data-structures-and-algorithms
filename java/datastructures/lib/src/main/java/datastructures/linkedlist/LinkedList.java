@@ -48,12 +48,15 @@ public class LinkedList {
   }
 
   public void insertBefore(int value, int newValue) {
-    Node current = head;
-    Node insertNode = new Node(newValue);
+    if (head == null) {
+      throw new IllegalArgumentException(value + " not found in list");
+    }
     if(head.getValue() == value) {
       insert(newValue);
       return;
     }
+    Node current = head;
+    Node insertNode = new Node(newValue);
     while(current.getNext() != null) {
       if(current.getNext().getValue() == value) {
         insertNode.setNext(current.getNext());
@@ -62,12 +65,25 @@ public class LinkedList {
       } else
       current = current.getNext();
     }
-    if (current.getNext() == null)
+    if(current.getNext() == null)
       throw new IllegalArgumentException(value + " not found in list");
   }
 
-  public void insertAfter(int value) {
-   //TODO
+  public void insertAfter(int value, int newValue) {
+    if (head == null) {
+      throw new IllegalArgumentException(value + " not found in list");
+    }
+    Node current = head;
+    Node insertNode = new Node(newValue);
+    while(current != null) {
+      if(current.getValue() == value) {
+        insertNode.setNext(current.getNext());
+        current.setNext(insertNode);
+        break;
+      }
+      current = current.getNext();
+    }
+    if(current == null)
+      throw new IllegalArgumentException(value + " not found in list");
   }
-
 }
