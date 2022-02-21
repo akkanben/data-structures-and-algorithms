@@ -75,4 +75,11 @@ public class LinkedListTest {
     }
     assert(Arrays.equals(linkedListOutput, testArray));
   }
+
+  @Test
+  void test_insert_add_node_to_end_of_list() {
+    LinkedList sut = new LinkedList();
+    sut.insert(5);
+    assert(sut.includes(5));
+  }
 }
