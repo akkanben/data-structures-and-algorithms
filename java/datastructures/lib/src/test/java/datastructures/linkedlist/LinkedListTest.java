@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class LinkedListTest {
 
   @Test
@@ -79,7 +81,53 @@ public class LinkedListTest {
   @Test
   void test_insert_add_node_to_end_of_list() {
     LinkedList sut = new LinkedList();
-    sut.insert(5);
+    sut.append(5);
     assert(sut.includes(5));
+  }
+
+  @Test
+  void test_insert_add_multiple_nodes_to_end_of_list() {
+    LinkedList sut = new LinkedList();
+    sut.append(-1000);
+    sut.append(-2000);
+    sut.append(-3000);
+    sut.append(-4000);
+    assert(sut.includes(-1000));
+    assert(sut.includes(-4000));
+    assert(!sut.includes(-5000));
+  }
+
+  @Test
+  void test_insertbefore_middle_node() {
+    LinkedList sut = new LinkedList();
+    sut.append(100);
+    sut.append(200);
+    sut.append(400);
+    sut.append(500);
+    sut.insertBefore(500,300);
+    assert(sut.toString().equals("{ 100 } -> { 200 } -> { 400 } -> { 300 } -> { 500 } -> NULL"));
+  }
+
+  @Test
+  void test_insertbefore_first_node() {
+    LinkedList sut = new LinkedList();
+    sut.append(0);
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    sut.insertBefore(0, -1);
+    System.out.println(sut);
+
+  }
+
+  @Test
+  void test_insertbefore_throws_method_exception() {
+    LinkedList sut = new LinkedList();
+    sut.append(100);
+    sut.append(200);
+    sut.append(300);
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.insertBefore(1000,300);
+    });
   }
 }

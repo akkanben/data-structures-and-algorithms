@@ -24,7 +24,7 @@ public class LinkedList {
     String output = "";
     Node current = head;
     while(current != null) {
-     output = "{ " + current.getValue() + " } -> " + output;
+     output += "{ " + current.getValue() + " } -> ";
      current = current.getNext();
     }
     return output + "NULL";
@@ -47,8 +47,23 @@ public class LinkedList {
     }
   }
 
-  public void insertBefore(int value) {
-    //TODO
+  public void insertBefore(int value, int newValue) {
+    Node current = head;
+    Node insertNode = new Node(newValue);
+    if(head.getValue() == value) {
+      insert(newValue);
+      return;
+    }
+    while(current.getNext() != null) {
+      if(current.getNext().getValue() == value) {
+        insertNode.setNext(current.getNext());
+        current.setNext(insertNode);
+        break;
+      } else
+      current = current.getNext();
+    }
+    if (current.getNext() == null)
+      throw new IllegalArgumentException(value + " not found in list");
   }
 
   public void insertAfter(int value) {
