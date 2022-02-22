@@ -1,37 +1,35 @@
-package datastructures.linkedlist;
+# Extending a Singly Linked List Implementation
 
-public class LinkedList {
-  Node head = null;
+Extend a singly linked list to include and "append", "insert before", and "insert after" method.
 
-  // Code Challenge 05
-  public void insert(int value) {
-    Node newHeadNode = new Node(value);
-    newHeadNode.setNext(head);
-    head = newHeadNode;
+**Required Unit Tests**
+
+1. Can successfully add a node to the end of the linked list
+2. Can successfully add multiple nodes to the end of a linked list
+3. Can successfully insert a node before a node located i the middle of a linked list
+4. Can successfully insert a node before the first node of a linked list
+5. Can successfully insert after a node in the middle of the linked list
+6. Can successfully insert a node after the last node of the linked list
+
+## Whiteboard Process
+
+[![Whiteboard](./images/singly-linked-list-extension.jpg)](./images/singly-linked-list-extension.jpg)
+
+<style>
+  img {
+    max-width: 80%;
   }
+</style>
 
-  public boolean includes(int value) {
-    Node current = head;
-    while(current != null) {
-      if(current.getValue() == value)
-        return true;
-      current = current.getNext();
-    }
-    return false;
-  }
-  @Override
-  public String toString() {
-    String output = "";
-    Node current = head;
-    while(current != null) {
-     output += "{ " + current.getValue() + " } -> ";
-     current = current.getNext();
-    }
-    return output + "NULL";
-  }
+## Approach & Efficiency
 
-  // Code Challenge 06
+In each function we need to either traverse the whole linked list in the worst case, or the case of append we need to always traverse each node. Because of this the time complexity is O(N). The space complexity is O(1) because the extra space required to hold the variables that help traverse the nodes are negligible as the linked list grows.
 
+- The time complexity of append could be improved to O(1) if I had implemented my linked list with a tail variable.
+
+### Code
+
+```java
   public void append(int value) {
     Node newTailNode = new Node(value);
     if(head == null) {
@@ -109,3 +107,7 @@ public class LinkedList {
       throw new IllegalArgumentException(value + " not found in list");
   }
 }
+
+
+```
+
