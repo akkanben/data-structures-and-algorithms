@@ -1,8 +1,5 @@
 # Extending a Singly Linked List Implementation
 
-
-## Challenge
-
 Extend a singly linked list to include and "append", "insert before", and "insert after" method.
 
 **Required Unit Tests**
@@ -14,18 +11,103 @@ Extend a singly linked list to include and "append", "insert before", and "inser
 5. Can successfully insert after a node in the middle of the linked list
 6. Can successfully insert a node after the last node of the linked list
 
-**
+## Whiteboard Process
 
+[![Whiteboard](./images/singly-linked-list-extension.jpg)](./images/singly-linked-list-extension.jpg)
+
+<style>
+  img {
+    max-width: 80%;
+  }
+</style>
 
 ## Approach & Efficiency
 
-Inserting into the list is O(1) because we can add it directly without any traversal. Traversing the list is O(N) in the worst case of traversing the entire list.
+In each function we need to either traverse the whole linked list in the worst case, or the case of append we need to always traverse each node. Because of this the time complexity is O(N). The space complexity is O(1) because the extra space required to hold the variables that help traverse the nodes are negligible as the linked list grows.
 
-## API
+- The time complexity of append could be improved to O(1) if I had implemented my linked list with a tail variable.
 
-**public void insert(int value)** The insert method takes an integer as an argument and adds this integer to the beginning of the linked list.
+### Code
 
-**public boolean includes(int value)** The includes method takes and integer as an argument and returns true if the integer value is found in the list.
+```java
+  public void append(int value) {
+    Node newTailNode = new Node(value);
+    if(head == null) {
+      newTailNode.setNext(head);
+      head = newTailNode;
+    } else {
+      Node current = head;
+      while(current.getNext() != null) {
+        current = current.getNext();
+      }
+      current.setNext(newTailNode);
+      newTailNode.setNext(null);
+    }
+  }
 
-**public String toString()** The toString method overides the default toString method and return a string representation of the elements in the linked list.
+  public void insertBefore(int value, int newValue) {
+    if (head == null) {
+      throw new IllegalArgumentException(value + " not found in list");
+    }
+    if(head.getValue() == value) {
+      insert(newValue);
+      return;
+    }
+    Node current = head;
+    Node insertNode = new Node(newValue);
+    while(current.getNext() != null) {
+      if(current.getNext().getValue() == value) {
+        insertNode.setNext(current.getNext());
+        current.setNext(insertNode);
+        break;
+      } else
+      current = current.getNext();
+    }
+    if(current.getNext() == null)
+      throw new IllegalArgumentException(value + " not found in list");
+  }
+
+  public void insertAfter(int value, int newValue) {
+    if (head == null) {
+      throw new IllegalArgumentException(value + " not found in list");
+    }
+    Node current = head;
+    Node insertNode = new Node(newValue);
+    while(current != null) {
+      if(current.getValue() == value) {
+        insertNode.setNext(current.getNext());
+        current.setNext(insertNode);
+        break;
+      }
+      current = current.getNext();
+    }
+    if(current == null)
+      throw new IllegalArgumentException(value + " not found in list");
+  }
+
+  public void delete(int value) {
+    if (head == null) {
+      throw new IllegalArgumentException(value + " not found in list");
+    }
+    if (head.getValue() == value) {
+      head = head.getNext();
+      return;
+    }
+    Node current = head;
+    while(current.getNext() != null) {
+      if(current.getNext().getValue() == value) {
+        current.setNext(current.getNext().getNext());
+        return;
+      }
+      current = current.getNext();
+    }
+    if(current.getValue() == value)
+      current = null;
+    else
+      throw new IllegalArgumentException(value + " not found in list");
+  }
+}
+
+
+```
 
