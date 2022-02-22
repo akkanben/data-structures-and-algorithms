@@ -14,7 +14,7 @@ Write a method extending the Linked List class to find the kth from the end valu
 
 ## Whiteboard Process
 
-[![Whiteboard](./images/singly-linked-list-kth-from-end.jpg)](./images/singly-linked-list-kth-from-end.jpg)
+[![Whiteboard](./images/linked-list-kth.jpg)](./images/linked-list-kth.jpg)
 
 <style>
   img {
@@ -35,3 +35,40 @@ In the worst case we're still using a time complexity of O(N) but the time compl
 
 ### Code
 
+```java
+public int kthFromEnd(int k) {
+  if(head == null || k < 0)
+    throw new IllegalArgumentException("position " + k + " out of bounds");
+  HashMap<Integer, Integer> valueMap = new HashMap<>();
+  Node current = new Node();
+  current = head;
+  int position = 0;
+  while(current != null) {
+    valueMap.put(position++, current.getValue());
+    current = current.getNext();
+  }
+  if(k >= valueMap.size())
+    throw new IllegalArgumentException("position " + k + " out of bounds");
+  return valueMap.get((valueMap.size() - 1) - k);
+  }
+
+  // we can assume "size" is a class instance variable
+  public int kthFromEndWithSize(int k) {
+    int targetPosition = (size - 1) - k;
+    if(k < 0 || targetPosition < 0 || targetPosition > size)
+      throw new IllegalArgumentException("position " + k + " out of bounds");
+    int output = 0;
+    Node current = new Node();
+    current = head;
+    int position = 0;
+    while(current != null) {
+      if(position == targetPosition) {
+        output = current.getValue();
+        break;
+      }
+      position++;
+      current = current.getNext();
+    }
+    return output;
+  }
+```

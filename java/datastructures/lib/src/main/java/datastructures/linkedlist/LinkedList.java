@@ -1,5 +1,7 @@
 package datastructures.linkedlist;
 
+import java.util.HashMap;
+
 public class LinkedList {
   Node head = null;
 
@@ -107,5 +109,40 @@ public class LinkedList {
       current = null;
     else
       throw new IllegalArgumentException(value + " not found in list");
+  }
+
+public int kthFromEnd(int k) {
+  if(head == null || k < 0)
+    throw new IllegalArgumentException("position " + k + " out of bounds");
+  HashMap<Integer, Integer> valueMap = new HashMap<>();
+  Node current = new Node();
+  current = head;
+  int position = 0;
+  while(current != null) {
+    valueMap.put(position++, current.getValue());
+    current = current.getNext();
+  }
+  if(k >= valueMap.size())
+    throw new IllegalArgumentException("position " + k + " out of bounds");
+  return valueMap.get((valueMap.size() - 1) - k);
+  }
+
+  public int kthFromEndWithSize(int k, int size) {
+    int targetPosition = (size - 1) - k;
+    if(k < 0 || targetPosition < 0 || targetPosition > size)
+      throw new IllegalArgumentException("position " + k + " out of bounds");
+    int output = 0;
+    Node current = new Node();
+    current = head;
+    int position = 0;
+    while(current != null) {
+      if(position == targetPosition) {
+        output = current.getValue();
+        break;
+      }
+      position++;
+      current = current.getNext();
+    }
+    return output;
   }
 }

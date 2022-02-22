@@ -210,4 +210,106 @@ public class LinkedListTest {
       sut.delete(0);
     });
   }
+
+  @Test
+  void test_kthfromend_too_large_k() {
+    LinkedList sut = new LinkedList();
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.kthFromEnd(4);
+    });
+  }
+
+  @Test
+  void test_kthfromend_same_length_as_k() {
+    LinkedList sut = new LinkedList();
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.kthFromEnd(3);
+    });
+  }
+
+  @Test
+  void test_kthfromend_negative_k() {
+    LinkedList sut = new LinkedList();
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.kthFromEnd(-1);
+    });
+  }
+
+  @Test
+  void test_kthfromend_list_size_of_one() {
+    LinkedList sut = new LinkedList();
+    sut.append(100);
+    assert(sut.kthFromEnd(0) == 100);
+  }
+
+  @Test
+  void test_kthfromend_happy_path_middle_k() {
+    LinkedList sut = new LinkedList();
+    sut.append(-1);
+    sut.append(0);
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    assert(sut.kthFromEnd(2) == 1);
+  }
+
+  @Test
+  void test_kthfromendwithsize_too_large_k() {
+    LinkedList sut = new LinkedList();
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.kthFromEndWithSize(4, 3);
+    });
+  }
+
+  @Test
+  void test_kthfromendwithsize_same_length_as_k() {
+    LinkedList sut = new LinkedList();
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.kthFromEndWithSize(3, 3);
+    });
+  }
+
+  @Test
+  void test_kthfromendwithsize_negative_k() {
+    LinkedList sut = new LinkedList();
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.kthFromEndWithSize(-1, 3);
+    });
+  }
+
+  @Test
+  void test_kthfromendwithsize_list_size_of_one() {
+    LinkedList sut = new LinkedList();
+    sut.append(100);
+    assert(sut.kthFromEndWithSize(0, 1) == 100);
+  }
+
+  @Test
+  void test_kthfromendwithsize_happy_path_middle_k() {
+    LinkedList sut = new LinkedList();
+    sut.append(-1);
+    sut.append(0);
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    assert(sut.kthFromEndWithSize(2, 5) == 1);
+  }
 }
