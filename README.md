@@ -23,4 +23,5 @@ To run your tests
 | [Whiteboarding: Array Insert Shift](./java/arrayInsertShift/README.md) |
 | [Whiteboarding: Binary Search](./java/binarySearch/README.md)          |
 | [Implementation: Singly Linked Lists](./java/datastructures/singly-linked-list-readme.md)
-| [Extending an Implementation: Singly Linked Lists](./java/datastructures/singly-linked-list-extension-readme.md)
+| [Extending an Implementation: Append, Insert Before, Insert After](./java/datastructures/singly-linked-list-extension-readme.md)
+| [Extending an Implementation: Kth from End](./java/datastructures/singly-linked-list-kth-from-end-readme.md)

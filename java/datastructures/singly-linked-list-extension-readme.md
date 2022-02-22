@@ -13,7 +13,7 @@ Extend a singly linked list to include and "append", "insert before", and "inser
 
 ## Whiteboard Process
 
-[![Whiteboard](./images/singly-linked-list-extension.jpg)](./images/singly-linked-list-extension.jpg)
+[![Whiteboard](./images/linked-list-insertions.jpg)](./images/linked-list-insertions.jpg)
 
 <style>
   img {
