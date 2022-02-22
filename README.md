@@ -22,4 +22,5 @@ To run your tests
 | [Whiteboarding: Array Reversal](./java/arrayReverse/README.md)         |
 | [Whiteboarding: Array Insert Shift](./java/arrayInsertShift/README.md) |
 | [Whiteboarding: Binary Search](./java/binarySearch/README.md)          |
-| [Implementation: Singly Linked Lists](./java/datastructures/README.md)
+| [Implementation: Singly Linked Lists](./java/datastructures/singly-linked-list-readme.md)
+| [Extending an Implementation: Singly Linked Lists](./java/datastructures/singly-linked-list-extension-readme.md)
