@@ -166,4 +166,48 @@ public class LinkedListTest {
       sut.insertAfter(1000,300);
     });
   }
+
+  @Test
+  void test_delete_first_node() {
+    LinkedList sut = new LinkedList();
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    sut.delete(1);
+    assert(sut.toString().equals("{ 2 } -> { 3 } -> NULL"));
+  }
+
+  @Test
+  void test_delete_last_node() {
+    LinkedList sut = new LinkedList();
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    sut.delete(3);
+    assert(sut.toString().equals("{ 1 } -> { 2 } -> NULL"));
+  }
+
+  @Test
+  void test_delete_middle_node() {
+    LinkedList sut = new LinkedList();
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    sut.delete(2);
+    assert(sut.toString().equals("{ 1 } -> { 3 } -> NULL"));
+  }
+
+  @Test
+  void test_delete_throws_method_exception() {
+    LinkedList sut = new LinkedList();
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.delete(1);
+    });
+    sut.append(1);
+    sut.append(2);
+    sut.append(3);
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.delete(0);
+    });
+  }
 }

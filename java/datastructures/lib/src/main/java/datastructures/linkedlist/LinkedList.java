@@ -86,4 +86,26 @@ public class LinkedList {
     if(current == null)
       throw new IllegalArgumentException(value + " not found in list");
   }
+
+  public void delete(int value) {
+    if (head == null) {
+      throw new IllegalArgumentException(value + " not found in list");
+    }
+    if (head.getValue() == value) {
+      head = head.getNext();
+      return;
+    }
+    Node current = head;
+    while(current.getNext() != null) {
+      if(current.getNext().getValue() == value) {
+        current.setNext(current.getNext().getNext());
+        return;
+      }
+      current = current.getNext();
+    }
+    if(current.getValue() == value)
+      current = null;
+    else
+      throw new IllegalArgumentException(value + " not found in list");
+  }
 }
