@@ -14,7 +14,7 @@ Write a method extending the Linked List class to find the kth from the end valu
 
 ## Whiteboard Process
 
-[![Whiteboard](./images/linked-list-kth.jpg)](./images/linked-list-kth.jpg)
+[![Whiteboard](images/linked-list-kth.jpg)](images/linked-list-kth.jpg)
 
 <style>
   img {
@@ -28,7 +28,7 @@ I implemented this method in two ways. In the first way I used a HashMap to stor
 
 This implementation uses O(N) time complexity since we need to traverse the entire linked list, but accessing the map is O(1) so that step doesn't add any overhead. The space complexity is also O(N) because the size of the HashMap grows in proportion to N.
 
-The second way I implemented kthFromEnd is by assuming the Linked List class holds a value "size" that is the number of nodes in the list. If we can count on a variable size then we only need to traverse the list until the position `(size - 1) - k`. At that point we can return the value. 
+The second way I implemented kthFromEnd is by assuming the Linked List class holds a value "size" that is the number of nodes in the list. If we can count on a variable size then we only need to traverse the list until the position `(size - 1) - k`. At that point we can return the value.
 
 In the worst case we're still using a time complexity of O(N) but the time complexity improves to O(1) because no extra data increases as N increases.
 
