@@ -4,7 +4,7 @@ Create a function that takes in 2 linked lists and outputs a new linked list tha
 
 ## Whiteboard Process
 
-[![Whiteboard](images/linked-list-insertions.jpg)](../../../../../images/linked-list-zip.jpg)
+[![Whiteboard](../../../../../images/linked-list-zip.jpg)](../../../../../images/linked-list-zip.jpg)
 
 <style>
   img {
