@@ -1,10 +1,10 @@
 package datastructures.linkedlist;
 
-public class Node {
-  private int value;
-  private Node next = null;
+public class Node<T> {
+  private T value;
+  private Node<T> next = null;
 
-  Node(int value) {
+  Node(T value) {
     this.value = value;
   }
 
@@ -12,15 +12,15 @@ public class Node {
     //empty
   }
 
-  public int getValue() {
+  public T getValue() {
     return value;
   }
 
-  public Node getNext() {
+  public Node<T> getNext() {
     return next;
   }
 
-  public void setNext(Node node ) {
+  public void setNext(Node<T> node ) {
     next = node;
   }
 }

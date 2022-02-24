@@ -8,27 +8,27 @@ public class LinkedListTest {
 
   @Test
   void test_instantiate_empty_list() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     assert(sut.head == null);
   }
 
   @Test
   void test_insert() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.insert(5);
     assert(sut.includes(5));
   }
 
   @Test
   void test_head_points_to_first_node() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.insert(7);
     assert(sut.head.getValue() == 7);
   }
 
   @Test
   void test_multiple_insert() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.insert(-2);
     sut.insert(-1);
     sut.insert(0);
@@ -39,10 +39,11 @@ public class LinkedListTest {
 
   @Test
   void test_includes_true() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.insert(1001);
     sut.insert(1002);
     sut.insert(1003);
+    System.out.println(sut);
     assert(sut.includes(1001));
     assert(sut.includes(1002));
     assert(sut.includes(1003));
@@ -50,7 +51,7 @@ public class LinkedListTest {
 
   @Test
   void test_includes_false() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.insert(0);
     sut.insert(-99999);
     sut.insert(45000);
@@ -61,16 +62,16 @@ public class LinkedListTest {
 
   @Test
   void test_build_collection() {
-    LinkedList sut = new LinkedList();
-    int[] testArray = {-2, -1, 0, 1, 2, 3, 4, 5, 6, 7};
-    for (int element : testArray) {
+    LinkedList<Integer> sut = new LinkedList<>();
+    Integer[] testArray = {-2, -1, 0, 1, 2, 3, 4, 5, 6, 7};
+    for (Integer element : testArray) {
       sut.insert(element);
     }
-    int[] linkedListOutput = new int[testArray.length];
+    Integer[] linkedListOutput = new Integer[testArray.length];
     int index = testArray.length - 1;
     Node current = sut.head;
     while(current != null) {
-      linkedListOutput[index--] = current.getValue();
+      linkedListOutput[index--] = (Integer)current.getValue();
       current = current.getNext();
     }
     assert(Arrays.equals(linkedListOutput, testArray));
@@ -78,14 +79,14 @@ public class LinkedListTest {
 
   @Test
   void test_insert_add_node_to_end_of_list() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(5);
     assert(sut.includes(5));
   }
 
   @Test
   void test_insert_add_multiple_nodes_to_end_of_list() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(-1000);
     sut.append(-2000);
     sut.append(-3000);
@@ -97,7 +98,7 @@ public class LinkedListTest {
 
   @Test
   void test_insertbefore_middle_node() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(100);
     sut.append(200);
     sut.append(400);
@@ -108,7 +109,7 @@ public class LinkedListTest {
 
   @Test
   void test_insertbefore_first_node() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(0);
     sut.append(1);
     sut.append(2);
@@ -119,7 +120,7 @@ public class LinkedListTest {
 
   @Test
   void test_insertbefore_throws_method_exception() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     assertThrows(IllegalArgumentException.class, () -> {
       sut.insertBefore(100,0);
     });
@@ -133,7 +134,7 @@ public class LinkedListTest {
 
   @Test
   void test_insertafter_middle_node() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(100);
     sut.append(200);
     sut.append(400);
@@ -144,7 +145,7 @@ public class LinkedListTest {
 
   @Test
   void test_insertafter_last_node() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(-50);
     sut.append(-49);
     sut.append(-48);
@@ -155,7 +156,7 @@ public class LinkedListTest {
 
   @Test
   void test_insertafter_throws_method_exception() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     assertThrows(IllegalArgumentException.class, () -> {
       sut.insertAfter(100,0);
     });
@@ -169,7 +170,7 @@ public class LinkedListTest {
 
   @Test
   void test_delete_first_node() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(1);
     sut.append(2);
     sut.append(3);
@@ -179,7 +180,7 @@ public class LinkedListTest {
 
   @Test
   void test_delete_last_node() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(1);
     sut.append(2);
     sut.append(3);
@@ -189,7 +190,7 @@ public class LinkedListTest {
 
   @Test
   void test_delete_middle_node() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(1);
     sut.append(2);
     sut.append(3);
@@ -199,7 +200,7 @@ public class LinkedListTest {
 
   @Test
   void test_delete_throws_method_exception() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     assertThrows(IllegalArgumentException.class, () -> {
       sut.delete(1);
     });
@@ -213,7 +214,7 @@ public class LinkedListTest {
 
   @Test
   void test_kthfromend_too_large_k() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(1);
     sut.append(2);
     sut.append(3);
@@ -224,7 +225,7 @@ public class LinkedListTest {
 
   @Test
   void test_kthfromend_same_length_as_k() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(1);
     sut.append(2);
     sut.append(3);
@@ -235,7 +236,7 @@ public class LinkedListTest {
 
   @Test
   void test_kthfromend_negative_k() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(1);
     sut.append(2);
     sut.append(3);
@@ -246,14 +247,14 @@ public class LinkedListTest {
 
   @Test
   void test_kthfromend_list_size_of_one() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(100);
     assert(sut.kthFromEnd(0) == 100);
   }
 
   @Test
   void test_kthfromend_happy_path_middle_k() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(-1);
     sut.append(0);
     sut.append(1);
@@ -264,7 +265,7 @@ public class LinkedListTest {
 
   @Test
   void test_kthfromendwithsize_too_large_k() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(1);
     sut.append(2);
     sut.append(3);
@@ -275,7 +276,7 @@ public class LinkedListTest {
 
   @Test
   void test_kthfromendwithsize_same_length_as_k() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(1);
     sut.append(2);
     sut.append(3);
@@ -286,7 +287,7 @@ public class LinkedListTest {
 
   @Test
   void test_kthfromendwithsize_negative_k() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(1);
     sut.append(2);
     sut.append(3);
@@ -297,14 +298,14 @@ public class LinkedListTest {
 
   @Test
   void test_kthfromendwithsize_list_size_of_one() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(100);
     assert(sut.kthFromEndWithSize(0, 1) == 100);
   }
 
   @Test
   void test_kthfromendwithsize_happy_path_middle_k() {
-    LinkedList sut = new LinkedList();
+    LinkedList<Integer> sut = new LinkedList<>();
     sut.append(-1);
     sut.append(0);
     sut.append(1);
