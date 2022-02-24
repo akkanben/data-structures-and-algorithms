@@ -2,20 +2,22 @@ package datastructures.linkedlist;
 
 import java.util.HashMap;
 
-public class LinkedList {
-  Node head = null;
+public class LinkedList<T> {
+  Node<T> head = null;
+  int size = 0;
 
   // Code Challenge 05
-  public void insert(int value) {
-    Node newHeadNode = new Node(value);
+  public void insert(T value) {
+    Node<T> newHeadNode = new Node<>(value);
     newHeadNode.setNext(head);
     head = newHeadNode;
+    size++;
   }
 
-  public boolean includes(int value) {
-    Node current = head;
+  public boolean includes(T value) {
+    Node<T> current = head;
     while(current != null) {
-      if(current.getValue() == value)
+      if(current.getValue().equals(value))
         return true;
       current = current.getNext();
     }
@@ -24,7 +26,7 @@ public class LinkedList {
   @Override
   public String toString() {
     String output = "";
-    Node current = head;
+    Node<T> current = head;
     while(current != null) {
      output += "{ " + current.getValue() + " } -> ";
      current = current.getNext();
@@ -34,22 +36,23 @@ public class LinkedList {
 
   // Code Challenge 06
 
-  public void append(int value) {
-    Node newTailNode = new Node(value);
+  public void append(T value) {
+    Node<T> newTailNode = new Node<>(value);
     if(head == null) {
-      newTailNode.setNext(head);
+      newTailNode.setNext(null);
       head = newTailNode;
     } else {
-      Node current = head;
+      Node<T> current = head;
       while(current.getNext() != null) {
         current = current.getNext();
       }
       current.setNext(newTailNode);
       newTailNode.setNext(null);
     }
+    size++;
   }
 
-  public void insertBefore(int value, int newValue) {
+  public void insertBefore(T value, T newValue) {
     if (head == null) {
       throw new IllegalArgumentException(value + " not found in list");
     }
@@ -57,12 +60,13 @@ public class LinkedList {
       insert(newValue);
       return;
     }
-    Node current = head;
-    Node insertNode = new Node(newValue);
+    Node<T> current = head;
+    Node<T> insertNode = new Node<>(newValue);
     while(current.getNext() != null) {
-      if(current.getNext().getValue() == value) {
+      if(current.getNext().getValue().equals(value)) {
         insertNode.setNext(current.getNext());
         current.setNext(insertNode);
+        size++;
         break;
       } else
       current = current.getNext();
@@ -71,16 +75,17 @@ public class LinkedList {
       throw new IllegalArgumentException(value + " not found in list");
   }
 
-  public void insertAfter(int value, int newValue) {
+  public void insertAfter(T value, T newValue) {
     if (head == null) {
       throw new IllegalArgumentException(value + " not found in list");
     }
-    Node current = head;
-    Node insertNode = new Node(newValue);
+    Node<T> current = head;
+    Node<T> insertNode = new Node<>(newValue);
     while(current != null) {
-      if(current.getValue() == value) {
+      if(current.getValue().equals(value)) {
         insertNode.setNext(current.getNext());
         current.setNext(insertNode);
+        size++;
         break;
       }
       current = current.getNext();
@@ -89,33 +94,35 @@ public class LinkedList {
       throw new IllegalArgumentException(value + " not found in list");
   }
 
-  public void delete(int value) {
+  public void delete(T value) {
     if (head == null) {
       throw new IllegalArgumentException(value + " not found in list");
     }
-    if (head.getValue() == value) {
+    if (head.getValue().equals(value)) {
       head = head.getNext();
+      size--;
       return;
     }
-    Node current = head;
+    Node<T> current = head;
     while(current.getNext() != null) {
-      if(current.getNext().getValue() == value) {
+      if(current.getNext().getValue().equals(value)) {
         current.setNext(current.getNext().getNext());
+        size--;
         return;
       }
       current = current.getNext();
     }
-    if(current.getValue() == value)
+    if(current.getValue().equals(value))
       current = null;
     else
       throw new IllegalArgumentException(value + " not found in list");
   }
 
-public int kthFromEnd(int k) {
+public T kthFromEnd(int k) {
   if(head == null || k < 0)
     throw new IllegalArgumentException("position " + k + " out of bounds");
-  HashMap<Integer, Integer> valueMap = new HashMap<>();
-  Node current = new Node();
+  HashMap<Integer, T> valueMap = new HashMap<>();
+  Node<T> current;
   current = head;
   int position = 0;
   while(current != null) {
@@ -127,22 +134,24 @@ public int kthFromEnd(int k) {
   return valueMap.get((valueMap.size() - 1) - k);
   }
 
-  public int kthFromEndWithSize(int k, int size) {
+  public T kthFromEndWithSize(int k) {
     int targetPosition = (size - 1) - k;
     if(k < 0 || targetPosition < 0 || targetPosition > size)
       throw new IllegalArgumentException("position " + k + " out of bounds");
-    int output = 0;
-    Node current = new Node();
+    Node<T> current;
     current = head;
     int position = 0;
     while(current != null) {
       if(position == targetPosition) {
-        output = current.getValue();
-        break;
+        return current.getValue();
       }
       position++;
       current = current.getNext();
     }
-    return output;
+    throw new IllegalArgumentException("position " + k + " out of bounds");
+  }
+
+  public int size() {
+    return size;
   }
 }
