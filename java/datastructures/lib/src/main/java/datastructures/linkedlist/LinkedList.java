@@ -4,12 +4,14 @@ import java.util.HashMap;
 
 public class LinkedList<T> {
   Node<T> head = null;
+  int size = 0;
 
   // Code Challenge 05
   public void insert(T value) {
     Node<T> newHeadNode = new Node<>(value);
     newHeadNode.setNext(head);
     head = newHeadNode;
+    size++;
   }
 
   public boolean includes(T value) {
@@ -47,6 +49,7 @@ public class LinkedList<T> {
       current.setNext(newTailNode);
       newTailNode.setNext(null);
     }
+    size++;
   }
 
   public void insertBefore(T value, T newValue) {
@@ -63,6 +66,7 @@ public class LinkedList<T> {
       if(current.getNext().getValue().equals(value)) {
         insertNode.setNext(current.getNext());
         current.setNext(insertNode);
+        size++;
         break;
       } else
       current = current.getNext();
@@ -81,6 +85,7 @@ public class LinkedList<T> {
       if(current.getValue().equals(value)) {
         insertNode.setNext(current.getNext());
         current.setNext(insertNode);
+        size++;
         break;
       }
       current = current.getNext();
@@ -95,12 +100,14 @@ public class LinkedList<T> {
     }
     if (head.getValue().equals(value)) {
       head = head.getNext();
+      size--;
       return;
     }
     Node<T> current = head;
     while(current.getNext() != null) {
       if(current.getNext().getValue().equals(value)) {
         current.setNext(current.getNext().getNext());
+        size--;
         return;
       }
       current = current.getNext();
@@ -127,7 +134,7 @@ public T kthFromEnd(int k) {
   return valueMap.get((valueMap.size() - 1) - k);
   }
 
-  public T kthFromEndWithSize(int k, int size) {
+  public T kthFromEndWithSize(int k) {
     int targetPosition = (size - 1) - k;
     if(k < 0 || targetPosition < 0 || targetPosition > size)
       throw new IllegalArgumentException("position " + k + " out of bounds");
@@ -142,5 +149,9 @@ public T kthFromEnd(int k) {
       current = current.getNext();
     }
     throw new IllegalArgumentException("position " + k + " out of bounds");
+  }
+
+  public int size() {
+    return size;
   }
 }

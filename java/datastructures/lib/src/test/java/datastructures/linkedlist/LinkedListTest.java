@@ -270,7 +270,7 @@ public class LinkedListTest {
     sut.append(2);
     sut.append(3);
     assertThrows(IllegalArgumentException.class, () -> {
-      sut.kthFromEndWithSize(4, 3);
+      sut.kthFromEndWithSize(4);
     });
   }
 
@@ -281,7 +281,7 @@ public class LinkedListTest {
     sut.append(2);
     sut.append(3);
     assertThrows(IllegalArgumentException.class, () -> {
-      sut.kthFromEndWithSize(3, 3);
+      sut.kthFromEndWithSize(3);
     });
   }
 
@@ -292,7 +292,7 @@ public class LinkedListTest {
     sut.append(2);
     sut.append(3);
     assertThrows(IllegalArgumentException.class, () -> {
-      sut.kthFromEndWithSize(-1, 3);
+      sut.kthFromEndWithSize(-1);
     });
   }
 
@@ -300,7 +300,7 @@ public class LinkedListTest {
   void test_kthfromendwithsize_list_size_of_one() {
     LinkedList<Integer> sut = new LinkedList<>();
     sut.append(100);
-    assert(sut.kthFromEndWithSize(0, 1) == 100);
+    assert(sut.kthFromEndWithSize(0) == 100);
   }
 
   @Test
@@ -311,6 +311,6 @@ public class LinkedListTest {
     sut.append(1);
     sut.append(2);
     sut.append(3);
-    assert(sut.kthFromEndWithSize(2, 5) == 1);
+    assert(sut.kthFromEndWithSize(2) == 1);
   }
 }
