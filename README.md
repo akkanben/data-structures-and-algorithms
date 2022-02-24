@@ -17,7 +17,7 @@ To run your tests
 
 ### 401 Data Structures, Code Challenges
 
-| Table of Contents                                                      |
+| Table of Contents - Data Structures                                    |
 | -----------------------------------------------------------------------|
 | [Whiteboarding: Array Reversal](./java/arrayReverse/README.md)         |
 | [Whiteboarding: Array Insert Shift](./java/arrayInsertShift/README.md) |
@@ -25,3 +25,7 @@ To run your tests
 | [Implementation: Singly Linked Lists](./java/datastructures/singly-linked-list-readme.md)
 | [Extending an Implementation: Append, Insert Before, Insert After](./java/datastructures/singly-linked-list-extension-readme.md)
 | [Extending an Implementation: Kth from End](./java/datastructures/singly-linked-list-kth-from-end-readme.md)
+
+| Table of Contents - Code Challenges                                    |
+| -----------------------------------------------------------------------|
+| [Code Challenge / Algorithm](./java/datastructures/lib/src/main/java/codechallenges/linked-list-zip-readme.md)
