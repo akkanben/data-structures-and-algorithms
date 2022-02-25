@@ -1,6 +1,7 @@
 package codechallenges;
 
 import datastructures.linkedlist.LinkedList;
+import datastructures.linkedlist.Node;
 
 public class LinkedListChallenges {
 
@@ -61,5 +62,11 @@ public class LinkedListChallenges {
       list2HasMore = list2position < list2.size();
     }
     return output;
+  }
+
+  public void test() {
+    LinkedList<String> test = new LinkedList<>();
+    Node<String> t = new Node<>();
+    test.head = t;
   }
 }
