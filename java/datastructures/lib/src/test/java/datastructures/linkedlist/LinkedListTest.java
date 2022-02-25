@@ -23,7 +23,7 @@ public class LinkedListTest {
   void test_head_points_to_first_node() {
     LinkedList<Integer> sut = new LinkedList<>();
     sut.insert(7);
-    assert(sut.head.getValue() == 7);
+    assert(sut.head.value == 7);
   }
 
   @Test
@@ -34,7 +34,7 @@ public class LinkedListTest {
     sut.insert(0);
     sut.insert(1);
     sut.insert(2);
-    assert(sut.head.getValue() == 2);
+    assert(sut.head.value == 2);
   }
 
   @Test
@@ -71,8 +71,8 @@ public class LinkedListTest {
     int index = testArray.length - 1;
     Node current = sut.head;
     while(current != null) {
-      linkedListOutput[index--] = (Integer)current.getValue();
-      current = current.getNext();
+      linkedListOutput[index--] = (Integer)current.value;
+      current = current.next;
     }
     assert(Arrays.equals(linkedListOutput, testArray));
   }
