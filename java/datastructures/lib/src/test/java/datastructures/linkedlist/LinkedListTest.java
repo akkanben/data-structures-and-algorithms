@@ -43,7 +43,6 @@ public class LinkedListTest {
     sut.insert(1001);
     sut.insert(1002);
     sut.insert(1003);
-    System.out.println(sut);
     assert(sut.includes(1001));
     assert(sut.includes(1002));
     assert(sut.includes(1003));
