@@ -16,9 +16,8 @@ public class Stack<T> {
   }
 
   public T pop() {
-    Node<T> temp;
-    temp = top;
-    top.next = top;
+    Node<T> temp = top;
+    top = top.next;
     size--;
     return temp.value;
   }
