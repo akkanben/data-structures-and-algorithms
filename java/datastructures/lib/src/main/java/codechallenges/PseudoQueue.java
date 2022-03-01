@@ -13,8 +13,10 @@ public class PseudoQueue<T> {
   }
 
   T dequeue() {
-    while(!back.isEmpty()) {
-      front.push(back.pop());
+    if (front.isEmpty()) {
+      while(!back.isEmpty()) {
+        front.push(back.pop());
+      }
     }
     return front.pop();
   }

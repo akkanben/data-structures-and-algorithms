@@ -25,7 +25,9 @@ To run your tests
 | [Implementation: Singly Linked Lists](./java/datastructures/singly-linked-list-readme.md)
 | [Extending an Implementation: Append, Insert Before, Insert After](./java/datastructures/singly-linked-list-extension-readme.md)
 | [Extending an Implementation: Kth from End](./java/datastructures/singly-linked-list-kth-from-end-readme.md)
+| [Implementation: Stacks & Queues](./java/datastructures/stacks-and-queues-readme.md)
 
 | Table of Contents - Code Challenges                                    |
 | -----------------------------------------------------------------------|
-| [Code Challenge / Algorithm](./java/datastructures/lib/src/main/java/codechallenges/linked-list-zip-readme.md)
+| [Code Challenge / Algorithm Linked List Zip](./java/datastructures/lib/src/main/java/codechallenges/linked-list-zip-readme.md)
+| [Code Challenge / Algorithm Pseudo Queue](./java/datastructures/lib/src/main/java/codechallenges/pseudo-queue-readme.md)
