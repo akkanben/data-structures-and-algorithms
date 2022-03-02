@@ -31,3 +31,4 @@ To run your tests
 | -----------------------------------------------------------------------|
 | [Code Challenge / Algorithm Linked List Zip](./java/datastructures/lib/src/main/java/codechallenges/linked-list-zip-readme.md)
 | [Code Challenge / Algorithm Pseudo Queue](./java/datastructures/lib/src/main/java/codechallenges/pseudo-queue-readme.md)
+| [Code Challenge / Algorithm Stack Queue Animal Shelter](./java/datastructures/lib/src/main/java/codechallenges/stack-queue-animal-shelter-readme.md)
