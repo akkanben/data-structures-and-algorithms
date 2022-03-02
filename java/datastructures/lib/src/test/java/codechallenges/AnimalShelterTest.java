@@ -4,8 +4,7 @@ import codechallenges.animalshelter.Animal;
 import codechallenges.animalshelter.AnimalShelter;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AnimalShelterTest {
 
@@ -107,6 +106,25 @@ public class AnimalShelterTest {
     assertEquals(sut.dequeue("cat").getSpecies(), "cat");
     assertEquals(sut.dequeue("dog").getSpecies(), "dog");
     assertEquals(sut.size(), 0);
+  }
+
+  @Test
+  void test_dequeue_single_not_found() {
+    AnimalShelter sut = new AnimalShelter();
+    sut.enqueue(new Animal("dog"));
+    assertNull(sut.dequeue("cat"));
+  }
+
+  @Test
+  void test_dequeue_multiple_not_found() {
+    AnimalShelter sut = new AnimalShelter();
+    sut.enqueue(new Animal("dog"));
+    sut.enqueue(new Animal("dog"));
+    sut.enqueue(new Animal("dog"));
+    sut.enqueue(new Animal("cat"));
+    sut.enqueue(new Animal("dog"));
+    sut.dequeue("cat");
+    assertNull(sut.dequeue("cat"));
   }
 
 }
