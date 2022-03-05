@@ -1,11 +1,9 @@
 package datastructures.tree;
 
 import datastructures.queue.Queue;
-import org.checkerframework.checker.units.qual.A;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class BinaryTree<T> {
 
@@ -61,17 +59,19 @@ public class BinaryTree<T> {
     list.add(root.value);
   }
 
-  public void breadthFirstTraversal(Node<T> root) {
+  public T[] breadthFirstTraversal() {
+    ArrayList<T> outputList = new ArrayList<>();
     Queue<Node<T>> breadthQueue = new Queue<>();
     breadthQueue.enqueue(root);
     Node<T> front;
-    while(!breadthQueue.isEmpty()) {
+    while (!breadthQueue.isEmpty()) {
       front = breadthQueue.dequeue();
-      System.out.print(front.value + " ");
+      outputList.add(front.value);
       if (front.left != null)
         breadthQueue.enqueue(front.left);
       if (front.right != null)
         breadthQueue.enqueue(front.right);
     }
+    return (T[]) outputList.toArray();
   }
 }
