@@ -1,36 +1,64 @@
 package datastructures.tree;
 
 import datastructures.queue.Queue;
+import org.checkerframework.checker.units.qual.A;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BinaryTree<T> {
 
+  Node<T> root;
 
   public BinaryTree() {
     //empty;
   }
 
-  public void preOrderTraversal(Node<T> root) {
-    System.out.print(root.value + " ");
-    if (root.left != null)
-      preOrderTraversal(root.left);
-    if (root.right != null)
-      preOrderTraversal(root.right);
+  public BinaryTree(Node<T> root) {
+    this.root = root;
   }
 
-  public void inOrderTraversal(Node<T> root) {
-    if (root.left != null)
-      preOrderTraversal(root.left);
-    System.out.print(root.value + " ");
-    if (root.right != null)
-      preOrderTraversal(root.right);
+  public T[] preOrderTraversal() {
+    ArrayList<T> outputList = new ArrayList<>();
+    preOrderAsList(outputList, root);
+    return (T[]) outputList.toArray();
   }
 
-  public void postOrderTraversal(Node<T> root) {
+  private void preOrderAsList(ArrayList<T> list, Node<T> localRoot) {
+    list.add(localRoot.value);
+    if (localRoot.left != null)
+      preOrderAsList(list, localRoot.left);
+    if (localRoot.right != null)
+      preOrderAsList(list, localRoot.right);
+  }
+
+  public T[] inOrderTraversal() {
+    ArrayList<T> outputList = new ArrayList<>();
+    inOrderAsList(outputList, root);
+    return (T[]) outputList.toArray();
+  }
+
+  public void inOrderAsList(ArrayList<T> list, Node<T> localRoot) {
+    if (localRoot.left != null)
+      inOrderAsList(list, localRoot.left);
+    list.add(localRoot.value);
+    if (localRoot.right != null)
+      inOrderAsList(list, localRoot.right);
+  }
+
+  public T[] postOrderTraversal() {
+    ArrayList<T> outputList = new ArrayList<>();
+    postOrderAsList(outputList, root);
+    return (T[]) outputList.toArray();
+  }
+
+  public void postOrderAsList(ArrayList<T> list, Node<T> root) {
     if (root.left != null)
-      preOrderTraversal(root.left);
+      postOrderAsList(list, root.left);
     if (root.right != null)
-      preOrderTraversal(root.right);
-    System.out.print(root.value + " ");
+      postOrderAsList(list, root.right);
+    list.add(root.value);
   }
 
   public void breadthFirstTraversal(Node<T> root) {
