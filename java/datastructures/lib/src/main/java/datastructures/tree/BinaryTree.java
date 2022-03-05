@@ -2,7 +2,6 @@ package datastructures.tree;
 
 import datastructures.queue.Queue;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class BinaryTree<T> {
@@ -37,7 +36,7 @@ public class BinaryTree<T> {
     return (T[]) outputList.toArray();
   }
 
-  public void inOrderAsList(ArrayList<T> list, Node<T> localRoot) {
+  private void inOrderAsList(ArrayList<T> list, Node<T> localRoot) {
     if (localRoot.left != null)
       inOrderAsList(list, localRoot.left);
     list.add(localRoot.value);
@@ -51,7 +50,7 @@ public class BinaryTree<T> {
     return (T[]) outputList.toArray();
   }
 
-  public void postOrderAsList(ArrayList<T> list, Node<T> root) {
+  private void postOrderAsList(ArrayList<T> list, Node<T> root) {
     if (root.left != null)
       postOrderAsList(list, root.left);
     if (root.right != null)
