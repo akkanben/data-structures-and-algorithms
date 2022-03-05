@@ -115,7 +115,6 @@ public class BinaryTreeTest {
     //       (C)  (D) (F)  (G)
     String[] test = {"D", "E", "B", "F", "G", "C", "A"};
     assert(Arrays.equals(sut.postOrderTraversal(), test));
-    System.out.println(Arrays.toString(sut.breadthFirstTraversal()));
   }
 
   @Test
