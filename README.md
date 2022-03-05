@@ -26,6 +26,7 @@ To run your tests
 | [Extending an Implementation: Append, Insert Before, Insert After](./java/datastructures/singly-linked-list-extension-readme.md)
 | [Extending an Implementation: Kth from End](./java/datastructures/singly-linked-list-kth-from-end-readme.md)
 | [Implementation: Stacks & Queues](./java/datastructures/stacks-and-queues-readme.md)
+| [Implementation: Trees](./java/datastructures/trees-readme.md)
 
 | Table of Contents - Code Challenges                                    |
 | -----------------------------------------------------------------------|
