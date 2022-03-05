@@ -20,9 +20,10 @@ public class Queue<T> {
   }
 
   public T dequeue() {
-    front.next = front;
+    T output = front.value;
+    front = front.next;
     size--;
-    return front.value;
+    return output;
   }
 
   public T peek() {
