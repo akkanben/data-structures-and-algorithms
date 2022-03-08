@@ -1,6 +1,6 @@
 package datastructures.tree;
 
-public class BinarySearchTree<T extends Comparable<? super T>> extends BinaryTree<T> {
+public class BinarySearchTree<T extends Comparable<? super T>> extends BinaryTree{
 
   public void add(T value) {
     Node<T> newNode = new Node<>(value);
