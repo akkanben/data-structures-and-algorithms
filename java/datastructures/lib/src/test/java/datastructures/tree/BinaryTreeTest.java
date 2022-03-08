@@ -142,4 +142,73 @@ public class BinaryTreeTest {
     String[] test = {"A", "B", "C", "D", "E", "F", "G"};
     assert(Arrays.equals(sut.breadthFirstTraversal(), test));
   }
+
+  @Test
+  void test_max() {
+    BinaryTree<Integer> sut = new BinaryTree<>();
+    Node<Integer> a = new Node<>(2);
+    Node<Integer> b = new Node<>(7);
+    Node<Integer> c = new Node<>(5);
+    Node<Integer> d = new Node<>(2);
+    Node<Integer> e = new Node<>(6);
+    Node<Integer> f = new Node<>(9);
+    Node<Integer> g = new Node<>(5);
+    Node<Integer> h = new Node<>(11);
+    Node<Integer> i = new Node<>(4);
+    //              (2)
+    //             /   \
+    //          (7)     (5)
+    //         /   \       \
+    //       (2)  (6)      (9)
+    //           /   \     /
+    //          (5) (11) (4)
+    a.left = b;
+    a.right = c;
+    b.left = d;
+    b.right = e;
+    e.left = g;
+    e.right = h;
+    c.right = f;
+    f.left = i;
+    sut.root = a;
+    assertEquals(sut.max(), 11);
+  }
+
+  @Test
+  void test_max_single() {
+    BinaryTree<String> sut = new BinaryTree<>();
+    sut.root = new Node<>("Hi");
+    assertEquals(sut.max(), "Hi");
+  }
+
+  @Test
+  void test_max_empty() {
+    BinaryTree<Double> sut = new BinaryTree<>();
+    assertThrows(IllegalArgumentException.class, sut::max);
+  }
+
+  @Test
+  void test_max_first() {
+
+    BinaryTree<Integer> sut = new BinaryTree<>();
+    Node<Integer> a = new Node<>(10);
+    Node<Integer> b = new Node<>(9);
+    Node<Integer> c = new Node<>(8);
+    Node<Integer> d = new Node<>(7);
+    Node<Integer> e = new Node<>(6);
+    Node<Integer> f = new Node<>(5);
+    Node<Integer> g = new Node<>(2);
+    Node<Integer> h = new Node<>(0);
+    Node<Integer> i = new Node<>(-9);
+    a.left = b;
+    a.right = c;
+    b.left = d;
+    b.right = e;
+    e.left = g;
+    e.right = h;
+    c.right = f;
+    f.left = i;
+    sut.root = a;
+    assertEquals(sut.max(), 10);
+  }
 }

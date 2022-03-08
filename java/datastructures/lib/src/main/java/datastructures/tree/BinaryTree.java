@@ -4,7 +4,7 @@ import datastructures.queue.Queue;
 
 import java.util.ArrayList;
 
-public class BinaryTree<T> {
+public class BinaryTree<T extends Comparable<T>> {
 
   Node<T> root;
 
@@ -16,10 +16,10 @@ public class BinaryTree<T> {
     this.root = root;
   }
 
-  public T[] preOrderTraversal() {
+  public Object[] preOrderTraversal() {
     ArrayList<T> outputList = new ArrayList<>();
     preOrderAsList(outputList, root);
-    return (T[]) outputList.toArray();
+    return outputList.toArray();
   }
 
   private void preOrderAsList(ArrayList<T> list, Node<T> localRoot) {
@@ -30,10 +30,10 @@ public class BinaryTree<T> {
       preOrderAsList(list, localRoot.right);
   }
 
-  public T[] inOrderTraversal() {
+  public Object[] inOrderTraversal() {
     ArrayList<T> outputList = new ArrayList<>();
     inOrderAsList(outputList, root);
-    return (T[]) outputList.toArray();
+    return outputList.toArray();
   }
 
   private void inOrderAsList(ArrayList<T> list, Node<T> localRoot) {
@@ -44,10 +44,10 @@ public class BinaryTree<T> {
       inOrderAsList(list, localRoot.right);
   }
 
-  public T[] postOrderTraversal() {
+  public Object[] postOrderTraversal() {
     ArrayList<T> outputList = new ArrayList<>();
     postOrderAsList(outputList, root);
-    return (T[]) outputList.toArray();
+    return  outputList.toArray();
   }
 
   private void postOrderAsList(ArrayList<T> list, Node<T> root) {
@@ -58,7 +58,7 @@ public class BinaryTree<T> {
     list.add(root.value);
   }
 
-  public T[] breadthFirstTraversal() {
+  public Object[] breadthFirstTraversal() {
     ArrayList<T> outputList = new ArrayList<>();
     Queue<Node<T>> breadthQueue = new Queue<>();
     breadthQueue.enqueue(root);
@@ -71,6 +71,25 @@ public class BinaryTree<T> {
       if (front.right != null)
         breadthQueue.enqueue(front.right);
     }
-    return (T[]) outputList.toArray();
+    return outputList.toArray();
   }
+
+  public T max() {
+    if (root == null)
+      throw new IllegalArgumentException();
+    Queue<Node<T>> queue = new Queue<>();
+    queue.enqueue((Node<T>) root);
+    T max = (T) root.value;
+    while(!queue.isEmpty()) {
+      Node<T> temp = queue.dequeue();
+      if (temp.value.compareTo(max) > 0)
+        max = temp.value;
+      if ( temp.left != null)
+        queue.enqueue(temp.left);
+      if (temp.right != null)
+        queue.enqueue(temp.right);
+    }
+    return max;
+  }
+
 }
