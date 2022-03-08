@@ -2,9 +2,9 @@ package datastructures.tree;
 
 public class Node<T> {
 
-  T value;
-  Node<T> left = null;
-  Node<T> right = null;
+  public T value;
+  public Node<T> left = null;
+  public Node<T> right = null;
 
   public Node() {
     //empty

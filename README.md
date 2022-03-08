@@ -35,3 +35,4 @@ To run your tests
 | [Code Challenge / Algorithm Pseudo Queue](./java/datastructures/lib/src/main/java/codechallenges/pseudo-queue-readme.md)
 | [Code Challenge / Algorithm Stack Queue Animal Shelter](./java/datastructures/lib/src/main/java/codechallenges/stack-queue-animal-shelter-readme.md)
 | [Code Challenge / Algorithm Stack Queue Validate Brackets](./java/datastructures/lib/src/main/java/codechallenges/stack-queue-brackets-readme.md)
+| [Code Challenge / Algorithm Breadth First Binary Tree](./java/datastructures/lib/src/main/java/codechallenges/tree-breadth-first-readme.md)
