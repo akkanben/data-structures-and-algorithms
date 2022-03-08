@@ -82,7 +82,7 @@ public class BinaryTree<T extends Comparable<T>> {
     T max = (T) root.value;
     while(!queue.isEmpty()) {
       Node<T> temp = queue.dequeue();
-      if (temp.value.compareTo(max) > 0);
+      if (temp.value.compareTo(max) > 0)
         max = temp.value;
       if ( temp.left != null)
         queue.enqueue(temp.left);
