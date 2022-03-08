@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class BinaryTree<T extends Comparable<T>> {
 
-  Node<T> root;
+  public Node<T> root;
 
   public BinaryTree() {
     //empty;
