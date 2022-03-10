@@ -36,3 +36,4 @@ To run your tests
 | [Code Challenge / Algorithm Stack Queue Animal Shelter](./java/datastructures/lib/src/main/java/codechallenges/stack-queue-animal-shelter-readme.md)
 | [Code Challenge / Algorithm Stack Queue Validate Brackets](./java/datastructures/lib/src/main/java/codechallenges/stack-queue-brackets-readme.md)
 | [Code Challenge / Algorithm Breadth First Binary Tree](./java/datastructures/lib/src/main/java/codechallenges/tree-breadth-first-readme.md)
+| [Code Challenge / Algorithm FizzBuzz K-Ary Tree](./java/datastructures/lib/src/main/java/codechallenges/tree-fizz-buzz-readme.md)
