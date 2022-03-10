@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class TreeChallenges {
 
+  // Code Challenge 17 Breadth First
+
   public ArrayList<Integer> breadthFirst(BinaryTree<Integer> tree) {
       ArrayList<Integer> list = new ArrayList<>();
       Queue<Node<Integer>> queue = new Queue<>();
@@ -25,6 +27,8 @@ public class TreeChallenges {
       }
       return list;
   }
+
+  // Code Challenge 18 FizzBuzz K-Ary Tree (3 Functions)
 
   public KAryTree<String> fizzBuzz(KAryTree<Integer> tree) {
     if (tree.root == null)
