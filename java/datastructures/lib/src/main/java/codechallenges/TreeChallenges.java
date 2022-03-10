@@ -41,9 +41,7 @@ public class TreeChallenges {
 
 
   private void buildStringTree(KAryNode<String> outNode, KAryNode<Integer> inNode) {
-    if (inNode.childList.isEmpty())
-      return;
-    else {
+    if (!inNode.childList.isEmpty()) {
       for (KAryNode<Integer> node : inNode.childList) {
         KAryNode<String> temp = new KAryNode<>();
         temp.value = getFizzBuzzValue(node.value);
@@ -54,15 +52,15 @@ public class TreeChallenges {
   }
 
   private String getFizzBuzzValue(Integer inputValue) {
-    if (inputValue % 3 == 0 && inputValue % 5 == 0) {
+    if (inputValue < 3)
+      return inputValue.toString();
+    else if (inputValue % 3 == 0 && inputValue % 5 == 0)
       return "FizzBuzz";
-    } else if (inputValue % 3 == 0) {
+    else if (inputValue % 3 == 0)
       return "Fizz";
-    } else if (inputValue % 5 == 0) {
+    else if (inputValue % 5 == 0)
       return "Buzz";
-    } else {
+    else
       return inputValue.toString();
     }
-  }
-
 }
