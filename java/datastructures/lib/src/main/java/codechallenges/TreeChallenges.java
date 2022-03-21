@@ -39,7 +39,6 @@ public class TreeChallenges {
     return new KAryTree<String>(outputRoot);
   }
 
-
   private void buildStringTree(KAryNode<String> outNode, KAryNode<Integer> inNode) {
     if (!inNode.childList.isEmpty()) {
       for (KAryNode<Integer> node : inNode.childList) {
