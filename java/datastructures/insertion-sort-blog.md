@@ -76,3 +76,20 @@ After the iteration is complete we finish with a sorted array.
   - In the best case that the array is already sorted we would only visit each element once for a time efficacy of O(N), but in the worst case -- the case that counts for Big O, we need to compare each element (N * N-1) or N^2.
 - Space O(1)
   - No additional space is used since the array is being mutated and sorted in place.
+
+## Code 
+
+
+```java
+  public void insertionSort(int[] arr) {
+    for (int i = 1; i < arr.length; i++) {
+      int j = i - 1;
+      int temp = arr[i];
+      while (j >= 0 && temp < arr[j]) {
+        arr[j + 1] = arr[j];
+        j--;
+      }
+      arr[j + 1] = temp;
+    }
+  }
+```
