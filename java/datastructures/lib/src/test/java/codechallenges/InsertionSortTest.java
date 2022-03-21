@@ -46,4 +46,32 @@ public class InsertionSortTest {
     sut.insertionSort(arr);
     assertArrayEquals(arr, target);
   }
+
+  @Test
+  void test_empty() {
+    SortChallenges sut = new SortChallenges();
+    int[] arr = {};
+    int[] target = {};
+    sut.insertionSort(arr);
+    assertArrayEquals(arr, target);
+  }
+
+  @Test
+  void test_same() {
+    SortChallenges sut = new SortChallenges();
+    int[] arr = {5, 5, 5, 5, 5, 5};
+    int[] target = {5, 5, 5, 5, 5, 5};
+    sut.insertionSort(arr);
+    assertArrayEquals(arr, target);
+  }
+
+  @Test
+  void test_same_last_small() {
+    SortChallenges sut = new SortChallenges();
+    int[] arr = {5, 5, 5, 5, 5, 5, -5};
+    int[] target = {-5, 5, 5, 5, 5, 5, 5};
+    sut.insertionSort(arr);
+    assertArrayEquals(arr, target);
+  }
+
 }
