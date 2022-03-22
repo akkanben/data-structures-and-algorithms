@@ -38,3 +38,4 @@ To run your tests
 | [Code Challenge / Algorithm Breadth First Binary Tree](./java/datastructures/lib/src/main/java/codechallenges/tree-breadth-first-readme.md)
 | [Code Challenge / Algorithm FizzBuzz K-Ary Tree](./java/datastructures/lib/src/main/java/codechallenges/tree-fizz-buzz-readme.md)
 | [Code Challenge / Algorithm Insertion Sort Blog](./java/datastructures/insertion-sort-blog.md)
+| [Code Challenge / Algorithm Merge Sort Blog](./java/datastructures/merge-sort-blog.md)
