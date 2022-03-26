@@ -11,7 +11,7 @@ import java.util.List;
 public class HashMap<K, V> {
   ArrayList<LinkedList<HashMapPair<K, V>>> bucketArrayList;  // using ArrayList instead of array so we can instantiate with a parameterized type
   int capacity;
-  int pigeonHoles = 0;
+  int size = 0;
 
   public HashMap() {
     capacity = 10;
@@ -19,6 +19,10 @@ public class HashMap<K, V> {
     for (int i = 0; i < this.capacity; i++) {
       bucketArrayList.add(i, new LinkedList<HashMapPair<K, V>>());
     }
+  }
+
+  public int size() {
+    return size;
   }
 
   public HashMap(int size) {
@@ -47,13 +51,13 @@ public class HashMap<K, V> {
         return;
       }
     }
-    if (pigeonHoles == bucketArrayList.size()) {
+    if (size == bucketArrayList.size()) {
       expandCapacity();
     }
     LinkedList<HashMapPair<K, V>> list = bucketArrayList.get(index);
     list.append(newPair);
     bucketArrayList.set(index, list);
-    pigeonHoles++;
+    size++;
   }
 
 
@@ -75,7 +79,7 @@ public class HashMap<K, V> {
     LinkedList<HashMapPair<K, V>> list = newBucketList.get(index);
     list.append(newPair);
     newBucketList.set(index, list);
-    pigeonHoles++;
+    size++;
   }
 
   public V get(K key) {
@@ -91,7 +95,7 @@ public class HashMap<K, V> {
         return current.value.getValue();
       }
     }
-    throw new IllegalArgumentException("Key not found.");
+    return null;
   }
 
   public boolean contains(K key) {
@@ -128,7 +132,7 @@ public class HashMap<K, V> {
   }
 
   private void expandCapacity() {
-    pigeonHoles = 0;
+    size = 0;
     capacity *= 2;
     ArrayList<LinkedList<HashMapPair<K, V>>> newBucketList = new ArrayList<>(capacity);
     for (int i = 0; i < capacity; i++) {
