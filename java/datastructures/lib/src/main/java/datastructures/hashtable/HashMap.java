@@ -10,12 +10,13 @@ import java.util.List;
 // WARNING: Don't make K an Object or Character!
 public class HashMap<K, V> {
   ArrayList<LinkedList<HashMapPair<K, V>>> bucketArrayList;  // using ArrayList instead of array so we can instantiate with a parameterized type
-  int size;
+  int capacity;
+  int pigeonHoles = 0;
 
   public HashMap() {
-    size = 10;
-    this.bucketArrayList = new ArrayList<>(size);
-    for (int i = 0; i < this.size; i++) {
+    capacity = 10;
+    this.bucketArrayList = new ArrayList<>(capacity);
+    for (int i = 0; i < this.capacity; i++) {
       bucketArrayList.add(i, new LinkedList<HashMapPair<K, V>>());
     }
   }
@@ -24,11 +25,9 @@ public class HashMap<K, V> {
     if (size < 1) {
       throw new IllegalArgumentException("HashMap size must be 1 or greater!");
     }
-
-    this.size = size;
+    this.capacity = size;
     this.bucketArrayList = new ArrayList<>(size);
-
-    for (int i = 0; i < this.size; i++) {
+    for (int i = 0; i < this.capacity; i++) {
       bucketArrayList.add(i, new LinkedList<HashMapPair<K, V>>());
     }
   }
@@ -48,9 +47,35 @@ public class HashMap<K, V> {
         return;
       }
     }
+    if (pigeonHoles == bucketArrayList.size()) {
+      expandCapacity();
+    }
     LinkedList<HashMapPair<K, V>> list = bucketArrayList.get(index);
     list.append(newPair);
     bucketArrayList.set(index, list);
+    pigeonHoles++;
+  }
+
+
+  private void setDuringExpand(K key, V value, ArrayList<LinkedList<HashMapPair<K, V>>> newBucketList) {
+    int index = hash(key);
+    HashMapPair<K, V> newPair = new HashMapPair<>(key, value);
+    if (newBucketList.get(index) != null) {
+      LinkedList<HashMapPair<K, V>> list = newBucketList.get(index);
+      Node<HashMapPair<K, V>> current;
+      current = list.head;
+      while (current != null && current.value.getKey() != key) {
+        current = current.next;
+      }
+      if (current != null && current.value.getValue() != value) {
+        current.value.setValue(value);
+        return;
+      }
+    }
+    LinkedList<HashMapPair<K, V>> list = newBucketList.get(index);
+    list.append(newPair);
+    newBucketList.set(index, list);
+    pigeonHoles++;
   }
 
   public V get(K key) {
@@ -99,6 +124,26 @@ public class HashMap<K, V> {
   }
 
   public int hash(K key) {
-    return Math.abs(key.hashCode()) % size;
+    return Math.abs(key.hashCode()) % capacity;
+  }
+
+  private void expandCapacity() {
+    pigeonHoles = 0;
+    capacity *= 2;
+    ArrayList<LinkedList<HashMapPair<K, V>>> newBucketList = new ArrayList<>(capacity);
+    for (int i = 0; i < capacity; i++) {
+      newBucketList.add(i, new LinkedList<HashMapPair<K, V>>());
+    }
+    for (LinkedList<HashMapPair<K, V>> list : bucketArrayList) {
+      if (list != null) {
+        Node<HashMapPair<K, V>> current;
+        current = list.head;
+        while (current != null) {
+          setDuringExpand(current.value.getKey(), current.value.getValue(), newBucketList);
+          current = current.next;
+        }
+      }
+    }
+    bucketArrayList = newBucketList;
   }
 }
