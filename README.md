@@ -28,6 +28,7 @@ To run your tests
 | [Implementation: Stacks & Queues](./java/datastructures/stacks-and-queues-readme.md)
 | [Implementation: Trees](./java/datastructures/trees-readme.md)
 | [Extending an Implementation: Max Value Binary Tree](./java/datastructures/trees-max-value-readme.md)
+| [Implementation: Hash Table](./java/datastructures/hash-table-readme.md)
 
 | Table of Contents - Code Challenges                                    |
 | -----------------------------------------------------------------------|
