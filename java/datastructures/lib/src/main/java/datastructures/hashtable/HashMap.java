@@ -43,10 +43,10 @@ public class HashMap<K, V> {
       LinkedList<HashMapPair<K, V>> list = bucketArrayList.get(index);
       Node<HashMapPair<K, V>> current;
       current = list.head;
-      while (current != null && current.value.getKey() != key) {
+      while (current != null && !current.value.getKey().equals(key)) {
         current = current.next;
       }
-      if (current != null && current.value.getValue() != value) {
+      if (current != null && !current.value.getValue().equals(value)) {
         current.value.setValue(value);
         return;
       }
@@ -68,10 +68,10 @@ public class HashMap<K, V> {
       LinkedList<HashMapPair<K, V>> list = newBucketList.get(index);
       Node<HashMapPair<K, V>> current;
       current = list.head;
-      while (current != null && current.value.getKey() != key) {
+      while (current != null && !current.value.getKey().equals(key)) {
         current = current.next;
       }
-      if (current != null && current.value.getValue() != value) {
+      if (current != null && !current.value.getValue().equals(value)) {
         current.value.setValue(value);
         return;
       }
@@ -88,7 +88,7 @@ public class HashMap<K, V> {
       LinkedList<HashMapPair<K, V>> list = bucketArrayList.get(index);
       Node<HashMapPair<K, V>> current;
       current = list.head;
-      while (current != null && current.value.getKey() != key) {
+      while (current != null && !current.value.getKey().equals(key)) {
         current = current.next;
       }
       if (current != null) {
@@ -104,7 +104,7 @@ public class HashMap<K, V> {
       LinkedList<HashMapPair<K, V>> list = bucketArrayList.get(index);
       Node<HashMapPair<K, V>> current;
       current = list.head;
-      while (current != null && current.value.getKey() != key) {
+      while (current != null && !current.value.getKey().equals(key)) {
         current = current.next;
       }
       return current != null;
