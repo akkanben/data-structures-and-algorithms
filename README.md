@@ -41,3 +41,4 @@ To run your tests
 | [Code Challenge / Algorithm Insertion Sort Blog](./java/datastructures/insertion-sort-blog.md)
 | [Code Challenge / Algorithm Merge Sort Blog](./java/datastructures/merge-sort-blog.md)
 | [Code Challenge / Algorithm Quick Sort Blog](./java/datastructures/quick-sort-blog.md)
+| [Code Challenge / Algorithm Repeated Word HashMap](./java/datastructures/lib/src/main/java/codechallenges/hashmap-repeated-word-readme.md)
