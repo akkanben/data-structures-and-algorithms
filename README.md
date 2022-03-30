@@ -43,3 +43,4 @@ To run your tests
 | [Code Challenge / Algorithm Quick Sort Blog](./java/datastructures/quick-sort-blog.md)
 | [Code Challenge / Algorithm Repeated Word HashMap](./java/datastructures/lib/src/main/java/codechallenges/hashmap-repeated-word-readme.md)
 | [Code Challenge / Algorithm Tree Intersection](./java/datastructures/lib/src/main/java/codechallenges/tree-intersection-readme.md)
+| [Code Challenge / Algorithm HashMap Left Join](./java/datastructures/lib/src/main/java/codechallenges/hashmap-left-join-readme.md)
