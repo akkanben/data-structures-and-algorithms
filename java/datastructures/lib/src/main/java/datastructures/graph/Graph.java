@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<T>> {
-  private HashMap<Vertex<T>, LinkedList<Edge<T>>> adjacencyLists;
+  private final HashMap<Vertex<T>, LinkedList<Edge<T>>> adjacencyLists;
   private int size = 0;
 
   public Graph() {
@@ -54,10 +54,10 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
     return list;
   }
 
-  public List<Edge<T>> getEdges() {
+  public List<Edge<T>> getNeighbors(Vertex<T> vertex) {
     List<Edge<T>> list = new ArrayList<>();
-    for (Vertex<T> vertex : adjacencyLists.keys()) {
-      LinkedList<Edge<T>> edgeLinkedList = adjacencyLists.get(vertex);
+    LinkedList<Edge<T>> edgeLinkedList = adjacencyLists.get(vertex);
+    if (edgeLinkedList != null) {
       Node<Edge<T>> current;
       current = edgeLinkedList.head;
       while (current != null) {
@@ -74,11 +74,25 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
 
   @Override
   public String toString() {
-    return "";
+    String output = "";
+    for (Vertex<T> vertex : adjacencyLists.keys()) {
+      output += "[" + vertex.value.toString() + "] = ";
+      for (Edge<T> edge : getNeighbors(vertex)) {
+        output += "{" + edge.destination.value
+          .toString() + ":" + edge.weight + "} -> ";
+      }
+      if (output.substring(output.length() - 2).equals("= "))
+        output += "{} -> ";
+      output += "NULL\n";
+    }
+    if (output.length() < 1)
+      return "";
+    else
+      return output.substring(0, output.length() - 1);
   }
 
   @Override
   public int compareTo(Graph<T> o) {
-    return 0;
+    throw new UnsupportedOperationException("Graph does not support compareTo()");
   }
 }

@@ -1,5 +1,7 @@
 package datastructures.graph;
 
+import java.util.Objects;
+
 public class Vertex<T extends Comparable<? super T>> implements Comparable<Vertex<T>> {
 
   public T value;
@@ -15,11 +17,14 @@ public class Vertex<T extends Comparable<? super T>> implements Comparable<Verte
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return Objects.hashCode(value);
   }
 
   @Override
   public boolean equals(Object obj) {
-    return super.equals(obj);
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+    Vertex<?> vertex = (Vertex<?>) obj;
+    return Objects.equals(value, vertex.value);
   }
 }
