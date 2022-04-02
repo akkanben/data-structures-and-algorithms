@@ -46,7 +46,7 @@ public class HashMap<K, V> {
       while (current != null && !current.value.getKey().equals(key)) {
         current = current.next;
       }
-      if (current != null && !current.value.getValue().equals(value)) {
+      if (current != null && !current.value.equals(value)) {
         current.value.setValue(value);
         return;
       }
@@ -71,7 +71,7 @@ public class HashMap<K, V> {
       while (current != null && !current.value.getKey().equals(key)) {
         current = current.next;
       }
-      if (current != null && !current.value.getValue().equals(value)) {
+      if (current != null && !current.value.equals(value)) {
         current.value.setValue(value);
         return;
       }
