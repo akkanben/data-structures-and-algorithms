@@ -3,13 +3,13 @@
 
 #include <iostream>
 
-template <typename ValueType> struct Node {
-  Node(ValueType value_);
-  ValueType value;
-  Node<ValueType> *next;
+template <typename T> struct Node {
+  Node(T value_);
+  T value;
+  Node<T> *next;
 };
 
-template <typename ValueType> Node<ValueType>::Node(ValueType value_) {
+template <typename T> Node<T>::Node(T value_) {
   value = value_;
   next = NULL;
 };
