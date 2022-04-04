@@ -3,9 +3,11 @@ package datastructures.graph;
 import datastructures.hashtable.HashMap;
 import datastructures.linkedlist.LinkedList;
 import datastructures.linkedlist.Node;
+import datastructures.queue.Queue;
 import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<T>> {
@@ -71,6 +73,26 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
   public int size() {
     return size;
   }
+
+  public ArrayList<Vertex<T>> getVertexListBreadthFirst(Vertex<T> start) {
+    HashSet<T> set = new HashSet<>();
+    ArrayList<Vertex<T>> output = new ArrayList<>();
+    Queue<Vertex<T>> queue = new Queue<>();
+    set.add(start.value);
+    queue.enqueue(start);
+    while (!queue.isEmpty()) {
+      Vertex<T> current = queue.dequeue();
+      output.add(current);
+      for (Edge<T> edge : getNeighbors(current)) {
+        if (!set.contains(edge.destination.value)) {
+          queue.enqueue(edge.destination);
+          set.add(edge.destination.value);
+        }
+      }
+    }
+    return output;
+  }
+
 
   @Override
   public String toString() {
