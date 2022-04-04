@@ -121,4 +121,173 @@ public class GraphTest {
     Graph<String> sut = new Graph<>();
     assertEquals(sut.toString(), "");
   }
+
+  @Test
+  void breadth_example_pandora_start() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> pandora = sut.addVertex("Pandora");
+    Vertex<String> arendelle = sut.addVertex("Arendelle");
+    Vertex<String> metroville = sut.addVertex("Metroville");
+    Vertex<String> monstropolis = sut.addVertex("Monstropolis");
+    Vertex<String> narnia = sut.addVertex("Narnia");
+    Vertex<String> naboo = sut.addVertex("Naboo");
+    sut.addEdge(pandora, arendelle);
+    sut.addEdge(arendelle, pandora);
+    sut.addEdge(arendelle, metroville);
+    sut.addEdge(arendelle, monstropolis);
+    sut.addEdge(metroville, arendelle);
+    sut.addEdge(metroville, monstropolis);
+    sut.addEdge(metroville, naboo);
+    sut.addEdge(metroville, narnia);
+    sut.addEdge(narnia, metroville);
+    sut.addEdge(narnia, naboo);
+    sut.addEdge(naboo, narnia);
+    sut.addEdge(naboo, metroville);
+    sut.addEdge(naboo, monstropolis);
+    sut.addEdge(monstropolis, arendelle);
+    sut.addEdge(monstropolis, metroville);
+    sut.addEdge(monstropolis, naboo);
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListBreadthFirst(pandora)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("Pandora, Arendelle, Metroville, Monstropolis, Naboo, Narnia", testString);
+  }
+
+  @Test
+  void breadth_example_naboo_start() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> pandora = sut.addVertex("Pandora");
+    Vertex<String> arendelle = sut.addVertex("Arendelle");
+    Vertex<String> metroville = sut.addVertex("Metroville");
+    Vertex<String> monstropolis = sut.addVertex("Monstropolis");
+    Vertex<String> narnia = sut.addVertex("Narnia");
+    Vertex<String> naboo = sut.addVertex("Naboo");
+    sut.addEdge(pandora, arendelle);
+    sut.addEdge(arendelle, pandora);
+    sut.addEdge(arendelle, metroville);
+    sut.addEdge(arendelle, monstropolis);
+    sut.addEdge(metroville, arendelle);
+    sut.addEdge(metroville, monstropolis);
+    sut.addEdge(metroville, naboo);
+    sut.addEdge(metroville, narnia);
+    sut.addEdge(narnia, metroville);
+    sut.addEdge(narnia, naboo);
+    sut.addEdge(naboo, narnia);
+    sut.addEdge(naboo, metroville);
+    sut.addEdge(naboo, monstropolis);
+    sut.addEdge(monstropolis, arendelle);
+    sut.addEdge(monstropolis, metroville);
+    sut.addEdge(monstropolis, naboo);
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListBreadthFirst(naboo)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("Naboo, Narnia, Metroville, Monstropolis, Arendelle, Pandora", testString);
+  }
+
+  @Test
+  void breadth_example_narnia_start() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> pandora = sut.addVertex("Pandora");
+    Vertex<String> arendelle = sut.addVertex("Arendelle");
+    Vertex<String> metroville = sut.addVertex("Metroville");
+    Vertex<String> monstropolis = sut.addVertex("Monstropolis");
+    Vertex<String> narnia = sut.addVertex("Narnia");
+    Vertex<String> naboo = sut.addVertex("Naboo");
+    sut.addEdge(pandora, arendelle);
+    sut.addEdge(arendelle, pandora);
+    sut.addEdge(arendelle, metroville);
+    sut.addEdge(arendelle, monstropolis);
+    sut.addEdge(metroville, arendelle);
+    sut.addEdge(metroville, monstropolis);
+    sut.addEdge(metroville, naboo);
+    sut.addEdge(metroville, narnia);
+    sut.addEdge(narnia, metroville);
+    sut.addEdge(narnia, naboo);
+    sut.addEdge(naboo, narnia);
+    sut.addEdge(naboo, metroville);
+    sut.addEdge(naboo, monstropolis);
+    sut.addEdge(monstropolis, arendelle);
+    sut.addEdge(monstropolis, metroville);
+    sut.addEdge(monstropolis, naboo);
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListBreadthFirst(narnia)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("Narnia, Metroville, Naboo, Arendelle, Monstropolis, Pandora", testString);
+  }
+
+  @Test
+  void breadth_single_node() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> narnia = sut.addVertex("Narnia");
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListBreadthFirst(narnia)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("Narnia", testString);
+  }
+
+  @Test
+  void breadth_straight_line_start_front() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> pandora = sut.addVertex("Pandora");
+    Vertex<String> arendelle = sut.addVertex("Arendelle");
+    Vertex<String> metroville = sut.addVertex("Metroville");
+    Vertex<String> monstropolis = sut.addVertex("Monstropolis");
+    Vertex<String> narnia = sut.addVertex("Narnia");
+    Vertex<String> naboo = sut.addVertex("Naboo");
+    sut.addEdge(pandora, arendelle);
+    sut.addEdge(arendelle, pandora);
+    sut.addEdge(arendelle, metroville);
+    sut.addEdge(metroville, arendelle);
+    sut.addEdge(metroville, narnia);
+    sut.addEdge(narnia, metroville);
+    sut.addEdge(narnia, naboo);
+    sut.addEdge(naboo, narnia);
+    sut.addEdge(naboo, monstropolis);
+    sut.addEdge(monstropolis, naboo);
+    // Line graph:
+    // pandora <-> arendelle <-> metroville <-> narnia <-> naboo <-> monstropolis
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListBreadthFirst(pandora)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("Pandora, Arendelle, Metroville, Narnia, Naboo, Monstropolis", testString);
+  }
+
+  @Test
+  void breadth_straight_line_start_middle() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> pandora = sut.addVertex("Pandora");
+    Vertex<String> arendelle = sut.addVertex("Arendelle");
+    Vertex<String> metroville = sut.addVertex("Metroville");
+    Vertex<String> monstropolis = sut.addVertex("Monstropolis");
+    Vertex<String> narnia = sut.addVertex("Narnia");
+    Vertex<String> naboo = sut.addVertex("Naboo");
+    sut.addEdge(pandora, arendelle);
+    sut.addEdge(arendelle, pandora);
+    sut.addEdge(arendelle, metroville);
+    sut.addEdge(metroville, arendelle);
+    sut.addEdge(metroville, narnia);
+    sut.addEdge(narnia, metroville);
+    sut.addEdge(narnia, naboo);
+    sut.addEdge(naboo, narnia);
+    sut.addEdge(naboo, monstropolis);
+    sut.addEdge(monstropolis, naboo);
+    // Line graph:
+    // pandora <-> arendelle <-> metroville <-> narnia <-> naboo <-> monstropolis
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListBreadthFirst(metroville)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("Metroville, Arendelle, Narnia, Pandora, Naboo, Monstropolis", testString);
+  }
 }

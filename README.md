@@ -15,6 +15,7 @@
 | [Extending an Implementation: Max Value Binary Tree](./java/datastructures/trees-max-value-readme.md)
 | [Implementation: Hash Table](./java/datastructures/hash-table-readme.md)
 | [Implementation: Graph](./java/datastructures/graph-readme.md)
+| [Extending an Implementation: Breadth First Traversal Graph](./java/datastructures/graph-breadth-first-readme.md)
 
 | Table of Contents - Code Challenges                                    |
 | -----------------------------------------------------------------------|
