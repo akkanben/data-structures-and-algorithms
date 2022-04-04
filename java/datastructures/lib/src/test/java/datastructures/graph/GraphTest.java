@@ -222,7 +222,7 @@ public class GraphTest {
   }
 
   @Test
-  void breadth_empty() {
+  void breadth_single_node() {
     Graph<String> sut = new Graph<>();
     Vertex<String> narnia = sut.addVertex("Narnia");
     String testString = "";
@@ -263,7 +263,7 @@ public class GraphTest {
   }
 
   @Test
-  void breadth_straight_line() {
+  void breadth_straight_line_start_middle() {
     Graph<String> sut = new Graph<>();
     Vertex<String> pandora = sut.addVertex("Pandora");
     Vertex<String> arendelle = sut.addVertex("Arendelle");
