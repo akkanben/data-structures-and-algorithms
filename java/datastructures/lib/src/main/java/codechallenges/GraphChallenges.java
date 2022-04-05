@@ -10,6 +10,8 @@ public class GraphChallenges {
 
   public int businessTrip(Graph<String> graph, String[] cities) {
     int total = 0;
+    if (cities.length < 2)
+      return 0;
     Vertex<String> origin = new Vertex<>(cities[0]);
     List<Vertex<String>> vertices = graph.getVertices();
     for (Vertex<String> vertex : vertices) {
