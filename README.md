@@ -16,6 +16,7 @@
 | [Implementation: Hash Table](./java/datastructures/hash-table-readme.md)
 | [Implementation: Graph](./java/datastructures/graph-readme.md)
 | [Extending an Implementation: Breadth First Traversal Graph](./java/datastructures/graph-breadth-first-readme.md)
+| [Extending an Implementation: Depth First Traversal Graph](./java/datastructures/graph-depth-first-readme.md)
 
 | Table of Contents - Code Challenges                                    |
 | -----------------------------------------------------------------------|
