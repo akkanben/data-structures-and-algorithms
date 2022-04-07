@@ -290,4 +290,165 @@ public class GraphTest {
     testString = testString.substring(0, testString.length() - 2); // remove trailing comma
     assertEquals("Metroville, Arendelle, Narnia, Pandora, Naboo, Monstropolis", testString);
   }
+
+  @Test
+  void depth_cities() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> pandora = sut.addVertex("Pandora");
+    Vertex<String> arendelle = sut.addVertex("Arendelle");
+    Vertex<String> metroville = sut.addVertex("Metroville");
+    Vertex<String> monstropolis = sut.addVertex("Monstropolis");
+    Vertex<String> narnia = sut.addVertex("Narnia");
+    Vertex<String> naboo = sut.addVertex("Naboo");
+    sut.addEdge(pandora, arendelle);
+    sut.addEdge(arendelle, pandora);
+    sut.addEdge(arendelle, metroville);
+    sut.addEdge(arendelle, monstropolis);
+    sut.addEdge(metroville, arendelle);
+    sut.addEdge(metroville, monstropolis);
+    sut.addEdge(metroville, naboo);
+    sut.addEdge(metroville, narnia);
+    sut.addEdge(narnia, metroville);
+    sut.addEdge(narnia, naboo);
+    sut.addEdge(naboo, narnia);
+    sut.addEdge(naboo, metroville);
+    sut.addEdge(naboo, monstropolis);
+    sut.addEdge(monstropolis, arendelle);
+    sut.addEdge(monstropolis, metroville);
+    sut.addEdge(monstropolis, naboo);
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListDepthFirst(pandora)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("Pandora, Arendelle, Metroville, Monstropolis, Naboo, Narnia", testString);
+  }
+
+  @Test
+  void depth_cities_naboo_start() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> pandora = sut.addVertex("Pandora");
+    Vertex<String> arendelle = sut.addVertex("Arendelle");
+    Vertex<String> metroville = sut.addVertex("Metroville");
+    Vertex<String> monstropolis = sut.addVertex("Monstropolis");
+    Vertex<String> narnia = sut.addVertex("Narnia");
+    Vertex<String> naboo = sut.addVertex("Naboo");
+    sut.addEdge(pandora, arendelle);
+    sut.addEdge(arendelle, pandora);
+    sut.addEdge(arendelle, metroville);
+    sut.addEdge(arendelle, monstropolis);
+    sut.addEdge(metroville, arendelle);
+    sut.addEdge(metroville, monstropolis);
+    sut.addEdge(metroville, naboo);
+    sut.addEdge(metroville, narnia);
+    sut.addEdge(narnia, metroville);
+    sut.addEdge(narnia, naboo);
+    sut.addEdge(naboo, narnia);
+    sut.addEdge(naboo, metroville);
+    sut.addEdge(naboo, monstropolis);
+    sut.addEdge(monstropolis, arendelle);
+    sut.addEdge(monstropolis, metroville);
+    sut.addEdge(monstropolis, naboo);
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListDepthFirst(naboo)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("Naboo, Narnia, Metroville, Arendelle, Pandora, Monstropolis", testString);
+  }
+
+  @Test
+  void depth_challenge_example() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> a = sut.addVertex("A");
+    Vertex<String> b = sut.addVertex("B");
+    Vertex<String> c = sut.addVertex("C");
+    Vertex<String> d = sut.addVertex("D");
+    Vertex<String> e = sut.addVertex("E");
+    Vertex<String> f = sut.addVertex("F");
+    Vertex<String> g = sut.addVertex("G");
+    Vertex<String> h = sut.addVertex("H");
+    sut.addEdge(a, b);
+    sut.addEdge(b, a);
+    sut.addEdge(b, c);
+    sut.addEdge(c, b);
+    sut.addEdge(c, g);
+    sut.addEdge(g, c);
+    sut.addEdge(b, d);
+    sut.addEdge(d, b);
+    sut.addEdge(d, f);
+    sut.addEdge(f, d);
+    sut.addEdge(d, h);
+    sut.addEdge(h, d);
+    sut.addEdge(d, e);
+    sut.addEdge(e, d);
+    sut.addEdge(f, h);
+    sut.addEdge(h, f);
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListDepthFirst(a)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("A, B, C, G, D, F, H, E", testString);
+  }
+
+  @Test
+  void depth_challenge_straight_line() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> a = sut.addVertex("A");
+    Vertex<String> b = sut.addVertex("B");
+    Vertex<String> c = sut.addVertex("C");
+    Vertex<String> d = sut.addVertex("D");
+    Vertex<String> e = sut.addVertex("E");
+    Vertex<String> f = sut.addVertex("F");
+    Vertex<String> g = sut.addVertex("G");
+    Vertex<String> h = sut.addVertex("H");
+    sut.addEdge(a, b);
+    sut.addEdge(b, a);
+    sut.addEdge(b, c);
+    sut.addEdge(c, b);
+    sut.addEdge(c, d);
+    sut.addEdge(d, c);
+    sut.addEdge(d, e);
+    sut.addEdge(e, d);
+    sut.addEdge(e, f);
+    sut.addEdge(f, e);
+    sut.addEdge(f, g);
+    sut.addEdge(g, h);
+    sut.addEdge(h, h);
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListDepthFirst(a)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("A, B, C, D, E, F, G, H", testString);
+  }
+
+
+  @Test
+  void depth_single_vertex() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> a = sut.addVertex("A");
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListDepthFirst(a)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("A", testString);
+  }
+
+
+  @Test
+  void depth_single_directed_edge() {
+    Graph<String> sut = new Graph<>();
+    Vertex<String> a = sut.addVertex("A");
+    Vertex<String> b = sut.addVertex("B");
+    sut.addEdge(a, b);
+    String testString = "";
+    for (Vertex<String> v : sut.getVertexListDepthFirst(a)) {
+      testString += v.value + ", ";
+    }
+    testString = testString.substring(0, testString.length() - 2); // remove trailing comma
+    assertEquals("A, B", testString);
+  }
 }
