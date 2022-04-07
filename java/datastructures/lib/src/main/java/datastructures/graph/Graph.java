@@ -4,6 +4,7 @@ import datastructures.hashtable.HashMap;
 import datastructures.linkedlist.LinkedList;
 import datastructures.linkedlist.Node;
 import datastructures.queue.Queue;
+import datastructures.stack.Stack;
 import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
@@ -93,6 +94,35 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
     return output;
   }
 
+
+  public ArrayList<Vertex<T>> getVertexListDepthFirst(Vertex<T> start) {
+    HashSet<T> set = new HashSet<>();
+    ArrayList<Vertex<T>> output = new ArrayList<>();
+    Stack<Vertex<T>> stack = new Stack<>();
+    set.add(start.value);
+    stack.push(start);
+    output.add(start);
+    while (!stack.isEmpty()) {
+      Vertex<T> current = stack.peek();
+      Vertex<T> child = getFirstUnvisitedChild(current, set);
+      if (child != null) {
+        stack.push(child);
+        set.add(child.value);
+        output.add(child);
+      } else
+        stack.pop();
+    }
+    return output;
+  }
+
+  private Vertex<T> getFirstUnvisitedChild(Vertex<T> vertex, HashSet<T> set) {
+    List<Edge<T>> list = getNeighbors(vertex);
+    for (Edge<T> edge : list) {
+      if (!set.contains(edge.destination.value))
+        return edge.destination;
+    }
+    return null;
+  }
 
   @Override
   public String toString() {
