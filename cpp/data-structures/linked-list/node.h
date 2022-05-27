@@ -9,6 +9,8 @@ template <typename T> struct Node {
   Node<T> *next;
 };
 
+// Implementation
+
 template <typename T> Node<T>::Node(T value_) {
   value = value_;
   next = NULL;

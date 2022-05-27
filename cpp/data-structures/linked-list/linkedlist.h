@@ -11,6 +11,7 @@ template <typename T> class LinkedList {
 public:
   LinkedList();
   ~LinkedList();
+  Node<T> *getHead();
   void insert(T value);
   void append(T value);
   void insertBefore(T value, T newData);
@@ -24,12 +25,14 @@ public:
   std::string toString();
 
 private:
-  Node<T> *head;
+  Node<T> *head = nullptr;
   int elementCount;
 };
 
+// Implementation
+
 template <typename T> LinkedList<T>::LinkedList() {
-  head = NULL;
+  head = nullptr;
   elementCount = 0;
 }
 
@@ -41,6 +44,8 @@ template <typename T> LinkedList<T>::~LinkedList() {
     delete temp;
   }
 }
+
+template <typename T> Node<T> *LinkedList<T>::getHead() { return head; }
 
 template <typename T> void LinkedList<T>::insert(T value) {
   Node<T> *newHeadNode = new Node<T>(value);
@@ -64,8 +69,7 @@ template <typename T> void LinkedList<T>::append(T value) {
   elementCount++;
 }
 
-template <typename T>
-void LinkedList<T>::insertBefore(T targetValue, T newValue) {
+template <typename T> void LinkedList<T>::insertBefore(T targetValue, T newValue) {
   Node<T> *newNode = new Node<T>(newValue);
   if (head == NULL)
     throw std::invalid_argument(targetValue + " value not found in the list");
@@ -86,8 +90,7 @@ void LinkedList<T>::insertBefore(T targetValue, T newValue) {
   throw std::invalid_argument(targetValue + " value not found in the list");
 }
 
-template <typename T>
-void LinkedList<T>::insertAfter(T targetValue, T newValue) {
+template <typename T> void LinkedList<T>::insertAfter(T targetValue, T newValue) {
   Node<T> *newNode = new Node<T>(newValue);
   if (head == NULL)
     throw std::invalid_argument(targetValue + " value not found in the list");
@@ -156,8 +159,7 @@ template <typename T> void LinkedList<T>::removeAllOccurances(T targetValue) {
 
 template <typename T> T LinkedList<T>::kthFromEnd(int k) {
   if (head == NULL || k < 0)
-    throw std::invalid_argument("position " + std::to_string(k) +
-                                " is out of bounds");
+    throw std::invalid_argument("position " + std::to_string(k) + " is out of bounds");
   std::unordered_map<int, T> valueMap;
   Node<T> *current = head;
   int key = 0;
@@ -166,16 +168,14 @@ template <typename T> T LinkedList<T>::kthFromEnd(int k) {
     current = current->next;
   }
   if (k >= valueMap.size())
-    throw std::invalid_argument("position " + std::to_string(k) +
-                                " is out of bounds");
+    throw std::invalid_argument("position " + std::to_string(k) + " is out of bounds");
   return (valueMap[valueMap.size() - 1 - k]);
 }
 
 template <typename T> T LinkedList<T>::kthFromEndWithSize(int k) {
   int targetPosition = elementCount - 1 - k;
   if (k < 0 || targetPosition < 0 || targetPosition >= elementCount)
-    throw std::invalid_argument("position " + std::to_string(k) +
-                                " is out of bounds");
+    throw std::invalid_argument("position " + std::to_string(k) + " is out of bounds");
   Node<T> *current = head;
   int position = 0;
   while (current != NULL) {
@@ -184,8 +184,7 @@ template <typename T> T LinkedList<T>::kthFromEndWithSize(int k) {
     position++;
     current = current->next;
   }
-  throw std::invalid_argument("position " + std::to_string(k) +
-                              " is out of bounds");
+  throw std::invalid_argument("position " + std::to_string(k) + " is out of bounds");
 }
 
 template <typename T> bool LinkedList<T>::includes(T value) {
@@ -211,8 +210,5 @@ template <typename T> std::string LinkedList<T>::toString() {
   stream << "NULL";
   return stream.str();
 }
-
-// for debugging in gdb
-std::string &SSS(const char *s) { return *(new std::string(s)); }
 
 #endif
